@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.2-0.9997.4 (MiKTeX 2.9) (preloaded format=xelatex 2018.10.5)  5 NOV 2018 18:44
+This is XeTeX, Version 3.1415926-2.2-0.9997.4 (MiKTeX 2.9) (preloaded format=xelatex 2018.10.5)  6 JAN 2019 22:22
 entering extended mode
 **WPTERD_color.tex
 (F:\01paper\02PaperWrite\7_latex\01WPT\tiicolor\WPTERD_color.tex
@@ -283,7 +283,7 @@ File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) [1
 
 
-]
+] [2]
 Underfull \hbox (badness 4001) in paragraph at lines 123--124
 []\OT1/ptm/m/n/10 We con-sid-er a WS-N con-sist-ing of $\OML/cmm/m/it/10 n$ \OT
 1/ptm/m/n/10 stat-ic n-odes
@@ -296,7 +296,7 @@ msy/m/n/10 g$\OT1/ptm/m/n/10 , where n-ode $\OML/cmm/m/it/10 u[]$ \OT1/ptm/m/n/
 10 is po-si-tioned at
  []
 
-[2]
+
 Overfull \hbox (3.97421pt too wide) in paragraph at lines 133--133
 []|\OT1/ptm/b/n/8 Notation| 
  []
@@ -348,12 +348,15 @@ ors in graph $\OML/cmm/m/it/8 H$ \OT1/ptm/m/n/8 to-geth-er
  []
 
 File: fig1_network.eps Graphic file (type eps)
-<fig1_network.eps> [3]
+<fig1_network.eps>
+Underfull \vbox (badness 1460) has occurred while \output is active []
+
+ [3]
 Underfull \hbox (badness 2469) in paragraph at lines 213--214
 []\OT1/ptm/m/n/10 We will pro-vide our anal-y-sis and treat-men-t on the
  []
 
-
+[4]
 Underfull \hbox (badness 5954) in paragraph at lines 277--279
 \OT1/ptm/m/n/10 be-comes $\OML/cmm/m/it/10 e[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10
  v[]\OT1/cmr/m/n/10 )[] [](\OML/cmm/m/it/10 e[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/1
@@ -363,9 +366,8 @@ Underfull \hbox (badness 5954) in paragraph at lines 277--279
 1/cmr/m/n/10 ))$\OT1/ptm/m/n/10 .
  []
 
-[4]
 File: fig2_path.eps Graphic file (type eps)
- <fig2_path.eps>
+<fig2_path.eps>
 Underfull \hbox (badness 1354) in paragraph at lines 355--356
 []\OT1/ptm/m/n/10 Assume the t-wo neigh-bor-ing n-odes as $\OML/cmm/m/it/10 u[]
 $ \OT1/ptm/m/n/10 and $\OML/cmm/m/it/10 u[]$\OT1/ptm/m/n/10 .
@@ -384,6 +386,9 @@ OT1/ptm/m/n/10 , strict-ly hold-s. Con-sid-er-ing the giv-en pre-
  []
 
 [5] [6] [7]
+Underfull \vbox (badness 5985) has occurred while \output is active []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 553--554
 [] []$\OML/cmm/m/it/10 i[][] [] [][]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 e[]\OT1/c
 mr/m/n/10 (\OML/cmm/m/it/10 i\OT1/cmr/m/n/10 )[]\OML/cmm/m/it/10 e[]\OT1/cmr/m/
@@ -391,13 +396,12 @@ n/10 (\OML/cmm/m/it/10 i\OT1/cmr/m/n/10 ))\OML/cmm/m/it/10 =p\OT1/cmr/m/n/10 (\
 OML/cmm/m/it/10 i\OT1/cmr/m/n/10 )$\OT1/ptm/m/n/10 ;
  []
 
-[8]
 File: fig3_2full.eps Graphic file (type eps)
- <fig3_2full.eps>
+<fig3_2full.eps>
 File: fig4_2full_sch.eps Graphic file (type eps)
- <fig4_2full_sch.eps>
+ <fig4_2full_sch.eps> [8] [9]
 File: fig_2d3part.eps Graphic file (type eps)
- <fig_2d3part.eps> [9]
+ <fig_2d3part.eps>
 File: fig_3d12part.eps Graphic file (type eps)
 
 <fig_3d12part.eps>
@@ -435,15 +439,20 @@ File: sim_n100_makespan.eps Graphic file (type eps)
 
 <sim_n100_makespan.eps>
 File: sim_n100_switchnum.eps Graphic file (type eps)
- <sim_n100_switchnum.eps> [12] [13]
-(F:\01paper\02PaperWrite\7_latex\01WPT\tiicolor\WPTERD_color.aux) ) 
+ <sim_n100_switchnum.eps>
+Underfull \vbox (badness 1132) has occurred while \output is active []
+
+ [12]
+[13
+
+] (F:\01paper\02PaperWrite\7_latex\01WPT\tiicolor\WPTERD_color.aux) ) 
 Here is how much of TeX's memory you used:
- 2711 strings out of 430486
- 37404 string characters out of 3191444
- 102026 words of memory out of 3000000
- 5825 multiletter control sequences out of 15000+200000
+ 2712 strings out of 430486
+ 37425 string characters out of 3191444
+ 104026 words of memory out of 3000000
+ 5826 multiletter control sequences out of 15000+200000
  33894 words of font info for 84 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 27i,15n,24p,1879b,585s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,15n,24p,2205b,585s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on WPTERD_color.pdf (13 pages).
