@@ -262,7 +262,7 @@ Further inspections show that, what significantly affect the nodes' final energy
 
 \textit{The restrictions on each node's energy of not violating the lower and upper energy limits during the energy redistribution process are postponed to the WPTERD-Time problem, and hence are ignored in the WPTERD-Egy problem}.
 
-\subsection{Analyses on the WPTERD-Egy Problem}
+\subsection{Analyses of the WPTERD-Egy Problem}
 During the energy redistribution process, excessive energy harvested of a node is lost when its energy storage is full of energy. Given an energy transmission schedule, if some harvested energy are lost at some nodes, we say that \textit{this schedule has energy upper limit violations}.
 
 About energy transmission schedules with energy upper limit violations, we have the following lemma.
@@ -434,9 +434,9 @@ Using the matrix and vector symbols defined in Table \ref{T1}, problem \textbf{P
 
 Problem \textbf{P2} (\textit{i.e.}, \textbf{P3}) is a standard linear programming problem, which can be solved efficiently using mature software optimization packages, such as Gurobi, Cplex, Nlopt, and Snopt, Knitro, Conopt, Stoaminlp, Minlpsolve.
 
-\section{Analyses on the WPTERD-Time Problem}
+\section{Analyses of the WPTERD-Time Problem}
 \label{sec_wpter_time}
-Given an energy transmission schedule, we can group the schedule items into item sets $S^{i}{=}\{s^{i}_1, s^{i}_2, \ldots, s^{i}_{mi}\}$, $i{\in}\mathcal{N}(n)$. Thus, $S^{i}$ contains all $mi$ schedule items where node $u_i$ should transmit energy. Thus, the total energy transmission time length of $u_i$ contains $mi$ time slices with length $t_\text{e}(s^{i}_j){-}t_\text{b}(s^{i}_j)$, $j{\in}\mathcal{N}(mi)$.
+Given an energy transmission schedule, we can group the schedule items into item sets $S^{i}{=}\{s^{i}_1, s^{i}_2, \ldots, s^{i}_{m_i}\}$, $i{\in}\mathcal{N}(n)$. Thus, $S^{i}$ contains all $m_i$ schedule items where node $u_i$ should transmit energy. Thus, the total energy transmission time length of $u_i$ contains $m_i$ time slices with length $t_\text{e}(s^{i}_j){-}t_\text{b}(s^{i}_j)$, $j{\in}\mathcal{N}(m_i)$.
 
 Once the energy transmission time lengths of the nodes have been determined in the previous section, the remanent work to solve the WPTERD problem is to schedule the nodes' energy transmission time slices along the time line so that the makespan of the schedule is minimum meanwhile assuring the energy limits are not violated during the process. This problem is the WPTERD-Time problem, which is what the second step will solve. Violating the upper limits leads to energy loss thus destroying the optimality in term of maximum final energy. Violating the lower limits leads to invalid schedule.
 
@@ -492,7 +492,7 @@ The WPTERD-Time problem is NP-hard.
 \end{theorem}
 
 \begin{IEEEproof}
-We prove it by providing a polynomial reduction from the ETTS problem to the WPTERD-Time problem. For the ETTS problem with conflict graph $G(V,E)$ and task time length list $\mathbf{t}$, we can build an instance of WPTERD-Time problem with its parameters constructed as follows. We can use any matric as $\mathbf{C}$ on condition that it satisfies: (1) diagonal elements take value -1; (2) all elements corresponding to edges in $G$ take values from (0,1); (3) all other elements take value 0; (4)$c(i,j){+}c(j,i)>0$ for all edges $(i,j){\in}E(G)$. $e_\text{L}{=}0$, $e_\text{U}{=}\inf$, $p{=}1$, $e_\text{B}{=}\max(\mathbf{t}){+}1$, and $e_\text{E}{=}e_\text{B}{+}\mathbf{C}{*}\mathbf{t}$. This can obviously be done in polynomial time.
+We prove it by providing a polynomial reduction from the ETTS problem to the WPTERD-Time problem. For the ETTS problem with conflict graph $G(V,E)$ and task time length list $\mathbf{t}$, we can build an instance of WPTERD-Time problem with its parameters constructed as follows. We can use any matric as $\mathbf{C}$ on condition that it satisfies: (1) diagonal elements take value -1; (2) all elements corresponding to edges in $G$ take values from (0,1); (3) all other elements take value 0; (4)$c(i,j){+}c(j,i){>}0$ for all edges $(i,j){\in}E(G)$. $e_\text{L}{=}0$, $e_\text{U}{=}\inf$, $p{=}1$, $e_\text{B}{=}\max(\mathbf{t}){+}1$, and $e_\text{E}{=}e_\text{B}{+}\mathbf{C}{*}\mathbf{t}$. This can obviously be done in polynomial time.
 
 Then it is easy to check that any schedule to the instance of the ETTS problem is a valid energy transmission schedule to the constructed instance of the WPTERD-time problem, and vise visa. In other words, the solutions to the ETTS problem instance and those to the WPTERD-Time problem have a one-to-one map. Hence, the theorem follows.
 \end{IEEEproof}
@@ -500,103 +500,43 @@ Then it is easy to check that any schedule to the instance of the ETTS problem i
 \section{Solve the WPTERD-Time Problem}
 \label{sec_solve_wpter_time}
 
-Theorem~\ref{lemma_etts_npc} and Theorem~\ref{lemma_wpterd_time_npc} imply that it seems no polynomial algorithms to solve the two problems optimally. Hence, we propose an algorithm to solve the WPTERD-Time problem in two steps. In the first step, it solve the ETTS problem to obtain the collection of energy-transmission concurrent set, which means that the nodes in the set should transmit energy concurrently for a certain time length associated with the set. Step 1 just returns a collection of energy-transmission concurrent sets, whereas the sequence in which the energy transmission operations of the nodes in the sets are not determined. Hence in the second step, it determines the final schedule considering energy limits based on the energy-transmission concurrent set collection.
+Theorem~\ref{lemma_etts_npc} and Theorem~\ref{lemma_wpterd_time_npc} imply that no polynomial algorithms can solve the two problems optimally. We propose an approximate algorithm to solve it in two steps. In the first step, it solve the ETTS problem to obtain the collection of energy-transmission concurrent sets. A energy-transmission concurrent set is a set of nodes who transmit energy concurrently for a certain time length, this time length value is association of the set. Step 1 just returns a collection of energy-transmission concurrent sets, whereas the sequence of the energy transmissions are not determined. Instead, final energy transmission schedule is determined in the second step based on the energy-transmission concurrent set collection meanwhile considering the energy limits.
 
-\subsection{Step1: The LNSWL-SS algorithm for the ETTS problem}
-Inspired by the smallest-degree-last algorithm for approximately solving the GC problem, we propose our algorithm for the ETTS problem. Our algorithms first determines a sequence with nodes having least weight local neighbor set sequenced at last. Then schedule the tasks greedily following this sequence. When scheduling for each task, the task is scheduled to run in any time slice not occupied by any of its conflicting neighbors. We name the algorithm as Least Neighbor-Set-Weight Last Sequential Scheduling(LNSWL-SS) algorithm.
+\subsection{Step1: The LCNSWL-SS Algorithm for the ETTS Problem}
 
-The pseudo code of LNSWL-SS is shown in Alg.~\ref{Alg_LNSWL_SS}. The algorithm solve the ETTS problem in three stages. The while-loop between lines \ref{seqbegin}-\ref{seqend} implement the first stage, where it generates the sequence in which the tasks will be scheduled sequentially, meanwhile obtain a property value of graph $G$, defined as $\varpi(G){\triangleq}\max_{H{\subseteq}G}(\min_{v{\in}H}w(N_{H,\text{y}}(v))$, which denotes the largest $\varpi$ such that $G$ contains a subgraph $H$ in which each node's neighbor-set-weight is at least $\varpi$. Then in the second stage, the for-loop between code lines \ref{schbegin}-\ref{schend} greedily schedules the tasks one by one in this sequence by assigning all unused time slices not occupied by already determined schedule items of the current neighbor being scheduled. In last stage, code lines \ref{ctsbegin}-\ref{ctsend} generate the list of concurrent tasks in each time slot according to $S_\text{si}$ obtained in the previous stage.
+Inspired by the smallest-degree-last algorithm for approximately solving the GC problem, we propose an three-step algorithm for the ETTS problem. In the first step, it determines a sequence in which nodes having least conflicting-neighbor-set-weight(CNSW) ordered at last. Here the CNSW of a node represents the sum of the weights of the node'`s conflicting neighbors. Then in the second step, it makes schedule decisions for the tasks greedily following this sequence. When making schedule decisions for each task, it is scheduled to run in any time slice not occupied by any of its conflicting neighbors. Finally it return the list of schedule items in format of (concurrent-task-set, time-length), such a schedule item represents a decision that the nodes in concurrent-task-set should transmit energy concurrently for a period with length  of time-length. We name the algorithm as Least CNSW Last Sequential Scheduling(LCNSWL-SS) algorithm.
+
+The pseudo code of LCNSWL-SS is shown in Alg.~\ref{Alg_LNSWL_SS}. The while-loop between lines 2-7 implements the first stage. A property value of graph $G$, defined as $\varpi(G){\triangleq}\max_{H{\subseteq}G}(\min_{v{\in}H}w(N_{H,\text{y}}(v))$, is also obtained accompanyingly, which denotes the largest $\varpi$ such that $G$ contains a subgraph $H$ in which each node's CNSW is at least $\varpi$. The for-loop between code lines 8-10 implements the second step. Code lines 12-15 implements the last step.
 
 \begin{algorithm}[!htb]
-\caption{Least Neighbor-Set-Weight Last Sequential Scheduling(LNSWL-SS) algorithm}
+\caption{Least Conflicting-Neighbor-Set-Weight Last Sequential Scheduling(LCNSWL-SS) algorithm}
 \begin{algorithmic}[1]\label{Alg_LNSWL_SS}
     \REQUIRE $G(V,E,W)$: weighted conflict graph of the problem;\\
     \ENSURE $v_\text{List}[1{:}n]$: the node list representing the scheduling sequence;\\
     $S_\text{si}$: the set of schedule items;\\
-    $S_\text{cts}$: the collection of energy-transmission concurrent sets;\\
+    $S_\text{cts}$: the collection of (concurrent-task-set, time-length) schedule items;\\
     $\varpi(G)$: $\varpi(G){\triangleq}\max_{H{\subseteq}G}(\min_{v{\in}H}w_\text{N}(H,v))$; \\
     \STATE Initialize $G'{=}G(V,E)$, $\varpi(G){=}0$, $v_\text{List}{=}[]$;
     \WHILE {$G'{\neq}\emptyset$}\label{seqbegin}
         \STATE $\varpi(G){=}\max(\varpi(G),\min_{v_j{\in}V(G')}w_\text{N}(G',v_j))$;\label{v_update}
-        \STATE $v_i{=}\arg\min_{v_j{\in}V(G')}w_\text{N}(G',v_j)$;
-        \STATE $v_{List}=[v_i,v_\text{List}]$;
+        \STATE $v_i{=}\arg\min_{v_j{\in}V(G')}w_\text{N}(G',v_j)$; $v_{List}=[v_i,v_\text{List}]$;
         \STATE $V'{=}V(G'){-}v_i$; $E'{=}E(G'){-}\{e(i,k)|e(i,k){\in}V(G')\}$;
         \STATE $G'{=}G(V',E')$;
     \ENDWHILE \label{seqend}
     \FOR {$i{=}1{:}n$} \label{schbegin}
-        \STATE Assign all time slices unused by any schedule items of the nodes in $N(G',v_i)$, i.e., the neighboring nodes of $v_i$ in $G'$, and insert the corresponding schedule items into $S_\text{si}$;
+        \STATE Assign all time slices unused by any scheduled items of the nodes in $N(G',v_i)$, (i.e., the conflicting neighboring nodes of $v_i$ in $G'$), and insert the corresponding schedule items into $S_\text{si}$;
     \ENDFOR \label{schend}
-    \STATE Sort the beginning and ending times of all schedule items into a list $T_\text{s}(s_\text{c}){=}[t_1,t_2,\ldots,t_{L}]$ in ascending order(we assume the list has length $L$), we thus obtain $L{-}1$ time slots with slot i occupies time $(t_{i},t_{i{+}1}]$.\label{ctsbegin}
+    \STATE Sort the beginning and ending time values of all schedule items in $S_\text{si}$ into a list $T_\text{s}(s_\text{c}){=}[t_1,t_2,\ldots,t_{L}]$ in ascending order(here we assume the list has length $L$), we thus obtain $L{-}1$ time slots with slot $i$ occupies time interval $(t_{i},t_{i{+}1}]$.\label{ctsbegin}
     \FOR {$1{=}1{:}1{:}L{-}1$}
-        \STATE obtain the set $U_\text{T}(i)$ of concurrent tasks in time slot $i$;
-        \STATE $S_\text{cts}(i).CTS{=}U_\text{T}(i)$;$S_\text{cts}(i).TimeLen{=}t_{i{+}1}{-}t_{i}$;
+        \STATE Obtain the set $U_\text{T}(i)$ of concurrent tasks in time slot $i$;
+        \STATE $S_\text{cts}(i).CTS{=}U_\text{T}(i)$;$S_\text{cts}(i).tLen{=}t_{i{+}1}{-}t_{i}$;
     \ENDFOR \label{ctsend}
     \STATE \textbf{return} $S_\text{si}, S_\text{cts}, \varpi(G)$;
 \end{algorithmic}
 \end{algorithm}
 
-\subsection{Step2: Energy Transmission Schedule Considering Energy Limits}
+\subsection{Performance Ratio of the LCNSWL-SS Algorithm}
 
-This step determines a time-set schedule sequence of energy transmission time slices, where each sequence item determines the set of nodes that should transmit energy together with the time length of the time slice. This is determined by our algorithm named as energy-transmission concurrent set scheduling (ETCS-S) algorithm, which makes use of the collection of energy-transmission concurrent sets determined by the LNSWL-SS algorithm in step 1. The pseudo code of ETCS-S is shown in Alg.~\ref{Alg_ETCS_S}.
-
-The ETCS-S algorithm firstly inserts all sets in the collection of energy-transmission concurrent sets into a queue. These sets are called as candidate schedule items. The algorithm determines the available time slice lengths for the candidate schedule items in the queue in turn (code lines 9-19 in Algorithm \ref{Alg_ETCS_S}). The slice length $t3$ is mainly determined whichever is earlier:(1) the earliest time that one node's remaining time becomes 0 (code line \ref{line_timelen_time} in Algorithm \ref{Alg_ETCS_S}); (2)the earliest time that some node in $T_\text{A}$ reaches its lower energy limit $e_\text{L}$ (code line \ref{line_timelen_emin} in Algorithm \ref{Alg_ETCS_S}); (3) the earliest time that some node reaches its upper energy limit, which is determined using the bisection search method when necessary (code line \ref{line_timelen_emax} in Algorithm \ref{Alg_ETCS_S}). The other code lines update the candidate schedule items correspondingly and generating new candidate schedule items when necessary.
-
-\begin{algorithm}[!htb]
-\caption{The ETCS-S algorithm}
-\begin{algorithmic}[1]\label{Alg_ETCS_S}
-    \REQUIRE $S_\text{cts},\mathbf{e_B}, \mathbf{e_U}, \mathbf{e_L}, \mathbf{e_E}, \mathbf{C}, \mathbf{p}$;\\
-    \ENSURE $TS_\text{ss}$: the time-set schedule sequence;\\
-    \STATE $num(i)=0, u_i{\in}U$; Insert all items in $S_\text{cts}$ into an empty queue $Q$; \\
-    \WHILE {nonEmpty($Q$)}
-        \STATE $s1{=}$deQueue$(Q)$;
-        \STATE $i_1{=}\arg \min_{i{\in}s1.CTS}t(i)$; $t_1{=}t(i_1)$; \label{line_timelen_time}
-        \STATE $i_2{=}\arg \min_{i{\in}s1.CTS}(e_t(i){-}e_\text{L}(i))/p(i)$; $t_2{=}(e_t(i_2){-}e_\text{L}(i_2))/p(i_2)$; \label{line_timelen_emin}
-        \IF {$t_2{>}0$}
-            \STATE $t3{=}\min\{t_1,t_2\}$;
-            \STATE $e_{t1}{=}e_t{-}\mathbf{C}{*}\mathbf{p}{*}tv_{s1.CTS}(t3)$;
-            \WHILE {${\exists}i{\in}N(s1.CTS), e_{t1}(i){>}e_\text{U}(i)$}
-                \STATE Find the maximum $t3$ that leads to no energy overflow using the bisection method;\label{line_timelen_emax}
-                \IF {$t3{<}\epsilon$}
-                    \STATE $t3{=}\epsilon$;\textbf{break};\label{slicelen2epsilon}
-                \ENDIF
-            \ENDWHILE
-            \STATE $e_{t}{=}e_t{-}\mathbf{C}{*}\mathbf{p}{*}tv_{s1.CTS}(t3); e_{t}{=}\min{(e_{t},e_\text{U})}$;
-            \STATE $t(i){=}t(i){-}t3, i{\in}s1.CTS$;
-            \STATE $ts1.CTS{=}s1.CTS$; $ts1.timeLen{=}t3$;
-            \STATE $TS_\text{ss}{=}[TS_\text{ss},ts1]$;$s1.timeLen{=}s1.timeLen{-}t3$;
-            \STATE $s1.CTS{=}\{i|i{\in}s1.CTS, t(i){>}0\}$;
-            \IF {$s1.timeLen{>}0$}
-                \STATE enQueue$(Q,s1)$;
-            \ENDIF
-        \ELSE
-            \STATE $num(i_2){=}num(i_2){+}1$;
-            \IF {$num(i_2)>num_\text{limit,1}$}
-                \STATE $s1.CTS{=}\{i_2\}$; $s1.timeLen{=}s1.TimeLen$;
-                \STATE enQueue$(Q,s1)$;
-            \ENDIF
-        \ENDIF
-     \ENDWHILE
-     \STATE \textbf{return} $TS_\text{ss}$;
-\end{algorithmic}
-\end{algorithm}
-
-
-There are cases that neighboring nodes are both with full energy $e_\text{B}{=}e_\text{U}$ before the re-distribution. In this case, the binary search will fails to return a positive value. In fact, there is no way to keep the upper limits un-violated while keeping the energy optimality of the schedule. One such case is shown in Fig.\ref{fig_full}. The parameters are as follows: energy upper limit $e_\text{U}{=}[10,10,10]$, energy at the beginning $e_\text{B}{=}[10,10,1]$, energy expectation $e_\text{E}{=}[6,6,2]$, and energy transmission power $p{=}[10,10,1]$. It is easy to check that the energy transmission time length solution to the corresponding WPTERD-Egy problem will be $t{=}[5,5,0]$. Whichever $u_1$ and $u_2$ performs the energy transmission first, energy upper limit violation will happen at the other node. If we let them transmit energy simultaneously, optimality in energy will be damaged. To solve this dilemma, we compromise the energy optimality by allowing a short time period $\epsilon$ for energy loss/overflow(code line \ref{slicelen2epsilon} in Algorithm \ref{Alg_ETCS_S}). After that period, the two nodes can perform energy transmissions alternatively. One node keeps transmitting until the other reaches its energy upper limit, or the energy transmission time is used up. The energy changing processes of the nodes along with time using such an schedule are shown in Fig~\ref{fig_full_sch}. Since that energy harvesting coefficient is quite small, the time length that continuous energy transmission time periods will increase rapidly. With small enough $\epsilon$, the amount of energy loss may be trivial. The energy loss approaches 0 as $\epsilon{\rightarrow}0$.
-
-\begin{figure}[htb]
-\centering{\includegraphics[width=0.38\textwidth]{fig3_2full.eps}}
-\caption{An example without practical schedules assuring energy optimality of the WPTERD-Egy problem's solution.}
-\label{fig_full}
-\end{figure}
-
-\vspace{-4mm}
-\begin{figure}[htb]
-\centering{\includegraphics[width=0.42\textwidth]{fig4_2full_sch.eps}}
-\caption{The energy changing processes of the nodes along with time of a schedule for the example in Fig.\ref{fig_full}.}
-\label{fig_full_sch}
-\end{figure}
-
-\subsection{Performance Ratios of the LNSWL-SS Algorithm}
 The rough superiority of the solutions returned by an approximate algorithm is usually implied by its performance ratio. Performance ratio of an algorithm is a constant $\rho{\geq}1$ such that, for any instance $I$ of the maximization(minimization) problem, the value of any solution returned by the algorithm is at least $1/{\rho}$ (at most $\rho$ times of) of the optimal value. A polynomial time approximation scheme (PTAS) for a problem is a polynomial time approximation algorithm which guarantees performance ratio of $1{+}\epsilon$ for some $\epsilon{>}0$.
 
 For general graphs, the graph coloring problem is NP-hard even for any fixed number of colors $k{\geq}3$~\cite{Garey1979}. Furthermore, it is hard to approximate, \text{i.e.}, the problem of approximating the chromatic number with any constant ratio is also NP-hard~\cite{Arora1998}. Fortunately, for the ETTS problems embedded in the WPTERD-Time problem, the conflict graphs are intersection graphs of the nodes' energy signal coverage disks, we find that our LNSWL-SS Algorithm has constant approximations.
@@ -652,7 +592,6 @@ w_\text{N,y}(v^{*},H)&{=}&w(S_1{\cap}H{+}S_2{\cap}H{+}S_3{\cap}H{-}2{*}w(v^{*}))
 Combining the equations from Eq.\eqref{eqn_pr_2d3_1} to Eq.\eqref{eqn_pr_2d3_3}, we obtain $m_\text{LNSWL}{\leq}3{*}m_\text{OPT}$. The lemma follows.
 \end{IEEEproof}
 
-
 \begin{lemma}
 \label{lemma_3d_ratio12}
 For WSNs in 3D space, if the nodes' energy coverage spheres have equal radii, then the LNSWL-SS Algorithm has an approximation ratio of 12.
@@ -699,6 +638,67 @@ For the 3D case, we have to divide the sphere centered at $v^{*}$ with radius $r
 Further analyses will correspondingly result to performance ratio of 6 and 24, respectively. The lemma follows.
 
 \end{IEEEproof}
+
+\subsection{Step2: Energy Transmission Schedule Considering Energy Limits}
+
+This step determines a (set,time) schedule sequence of energy transmission time slices, where each sequence item determines the set of nodes that should transmit energy simultaneously together with the time length of the slice. This is determined by the algorithm named as energy-transmission concurrent set scheduling (ETCS-S), which makes use of the collection of concurrent task sets determined by the LNSWL-SS algorithm in Alg.~\ref{Alg_LNSWL_SS}. 
+
+The pseudo code of ETCS-S is shown in Alg.~\ref{Alg_ETCS_S}. It firstly inserts all schedule items in $S_\text{cts}$ obtained by LNSWL-SS into a queue. We call these items as candidate schedule items. ETCS-S determines the available time-slice lengths for the candidate schedule items in the queue in turn (code lines 9-19 in Alg.~\ref{Alg_ETCS_S}). The slice length $t3$ is mainly determined by whichever is earlier among the three values:(1) the earliest time that one node's remaining time (which means the difference between the expected time length and the accumulated time lengths of already scheduled items of the node in this part) becomes 0 (code line 4 in Alg.~\ref{Alg_ETCS_S}); (2)the earliest time that some node reaches its lower energy limit $e_\text{L}$ (code line 5 in Alg.~\ref{Alg_ETCS_S}); (3) the earliest time that some node reaches its upper energy limit, which is determined using the bisection search method when necessary (code lines 8-14 in Alg.~\ref{Alg_ETCS_S}). The other code lines update the candidate schedule items correspondingly and generating new candidate schedule items when necessary.
+
+\begin{algorithm}[!htb]
+\caption{The ETCS-S algorithm}
+\begin{algorithmic}[1]\label{Alg_ETCS_S}
+    \REQUIRE $S_\text{cts},\mathbf{e_B}, \mathbf{e_U}, \mathbf{e_L}, \mathbf{e_E}, \mathbf{C}, \mathbf{p}$;\\
+    \ENSURE $TS_\text{ss}$: the time-set schedule sequence;\\
+    \STATE $num(i)=0, u_i{\in}U$; Insert all items in $S_\text{cts}$ into an empty queue $Q$; \\
+    \WHILE {nonEmpty($Q$)}
+        \STATE $s1{=}$deQueue$(Q)$;
+        \STATE $i_1{=}\arg \min_{i{\in}s1.CTS}t(i)$; $t_1{=}t(i_1)$; \label{line_timelen_time}
+        \STATE $i_2{=}\arg \min_{i{\in}s1.CTS}(e_t(i){-}e_\text{L}(i))/p(i)$; $t_2{=}(e_t(i_2){-}e_\text{L}(i_2))/p(i_2)$; \label{line_timelen_emin}
+        \IF {$t_2{>}0$}
+            \STATE $t3{=}\min\{t_1,t_2\}$;
+            \STATE $e_{t1}{=}e_t{-}\mathbf{C}{*}\mathbf{p}{*}tv_{s1.CTS}(t3)$;
+            \WHILE {${\exists}i{\in}N(s1.CTS), e_{t1}(i){>}e_\text{U}(i)$}
+                \STATE Find the maximum $t3$ that leads to no energy overflow using the bisection method;\label{line_timelen_emax}
+                \IF {$t3{<}\epsilon$}
+                    \STATE $t3{=}\epsilon$;\textbf{break};\label{slicelen2epsilon}
+                \ENDIF
+            \ENDWHILE
+            \STATE $e_{t}{=}e_t{-}\mathbf{C}{*}\mathbf{p}{*}tv_{s1.CTS}(t3); e_{t}{=}\min{(e_{t},e_\text{U})}$;
+            \STATE $t(i){=}t(i){-}t3, i{\in}s1.CTS$;
+            \STATE $ts1.CTS{=}s1.CTS$; $ts1.tLen{=}t3$;
+            \STATE $TS_\text{ss}{=}[TS_\text{ss},ts1]$;$s1.tLen{=}s1.tLen{-}t3$;
+            \STATE $s1.CTS{=}\{i|i{\in}s1.CTS, t(i){>}0\}$;
+            \IF {$s1.tLen{>}0$}
+                \STATE enQueue$(Q,s1)$;
+            \ENDIF
+        \ELSE
+            \STATE $num(i_2){=}num(i_2){+}1$;
+            \IF {$num(i_2)>num_\text{lim}$}
+                \STATE $s1.CTS{=}\{i_2\}$; $s1.tLen{=}s1.tLen$;
+                \STATE enQueue$(Q,s1)$;
+            \ENDIF
+        \ENDIF
+     \ENDWHILE
+     \STATE \textbf{return} $TS_\text{ss}$;
+\end{algorithmic}
+\end{algorithm}
+
+
+There are cases that two neighboring nodes are both with full energy $e_\text{B}{=}e_\text{U}$ before the re-distribution. In this case, the bisection search (code lines 9-14 in Alg.~\ref{Alg_ETCS_S}) will fails to return a positive value. In fact, there is no way to keep the upper limits un-violated while keeping the energy optimality of the schedule. One such case is shown in Fig.\ref{fig_full}. The parameters are as follows: energy upper limit $e_\text{U}{=}[10,10,10]$, energy at the beginning $e_\text{B}{=}[10,10,1]$, energy expectation $e_\text{E}{=}[6,6,2]$, and energy transmission power $p{=}[1,1,1]$. It is easy to check that the energy transmission time-length solution to the corresponding WPTERD-Egy problem will be $t{=}[5,5,0]$. However, whichever of the two nodes, $u_1$ and $u_2$, performs the energy transmission first, energy-upper-limit(EUL) violation will happen at the other node. If we let them transmit energy simultaneously, optimality in energy will be damaged. To solve this dilemma, we compromise the energy optimality by allowing a short time period $\epsilon$ for energy loss/overflow(code lines 11-13 in Alg.~\ref{Alg_ETCS_S}). After that period, the two nodes can perform energy transmissions alternatively. One node keeps transmitting until the other reaches its EUL, or its energy transmission time is used up. We call this scheme as $\epsilon{-}$ scheme. The energy changing processes along time of the nodes using this idea are shown in Fig~\ref{fig_full_sch}. Since that energy harvesting coefficient is quite small, the time-length of a node's continuous energy transmission time slices will increase rapidly. With small enough $\epsilon$, the amount of energy loss may be trivial. In deed, the energy loss approaches 0 as $\epsilon{\rightarrow}0$.
+
+\begin{figure}[htb]
+\centering{\includegraphics[width=0.38\textwidth]{fig3_2full.eps}}
+\caption{An example of the WPTERD-Egy problem without practical schedules assuring energy optimality.}
+\label{fig_full}
+\end{figure}
+
+\vspace{-4mm}
+\begin{figure}[htb]
+\centering{\includegraphics[width=0.42\textwidth]{fig4_2full_sch.eps}}
+\caption{The energy changing processes along time of the nodes of a schedule for the example in Fig.\ref{fig_full}.}
+\label{fig_full_sch}
+\end{figure}
 
 \section{Solve the WPTERD Problem}
 \label{sec_algcombin}

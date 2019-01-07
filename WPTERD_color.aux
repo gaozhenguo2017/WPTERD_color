@@ -44,7 +44,7 @@
 \newlabel{sec_wpter_egy}{{IV}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-A}}Problem Formulation of the WPTERD-Egy Problem}{4}}
 \newlabel{eqn_wpterd_egy}{{3}{4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}Analyses on the WPTERD-Egy Problem}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {IV-B}}Analyses of the WPTERD-Egy Problem}{4}}
 \newlabel{eqn_energyfun_time}{{2}{5}}
 \newlabel{lemma_violation}{{1}{5}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The path connects $v_0$ and $v_1$ with $e_\text  {F}(v_1){<}e_\text  {U}(v_1)$.}}{5}}
@@ -58,7 +58,7 @@
 \newlabel{eqn_final_energy}{{6}{6}}
 \newlabel{eqn_p2}{{7}{6}}
 \newlabel{eqn_p3}{{8}{6}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Analyses on the WPTERD-Time Problem}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Analyses of the WPTERD-Time Problem}{6}}
 \newlabel{sec_wpter_time}{{V}{6}}
 \newlabel{eqn_wpterd_time}{{9}{7}}
 \newlabel{eqn_graph_conflict}{{10}{7}}
@@ -66,8 +66,11 @@
 \newlabel{lemma_wpterd_time_npc}{{4}{7}}
 \@writefile{toc}{\contentsline {section}{\numberline {VI}Solve the WPTERD-Time Problem}{7}}
 \newlabel{sec_solve_wpter_time}{{VI}{7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-A}}Step1: The LNSWL-SS algorithm for the ETTS problem}{7}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Least Neighbor-Set-Weight Last Sequential Scheduling(LNSWL-SS) algorithm}}{8}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-A}}Step1: The LCNSWL-SS Algorithm for the ETTS Problem}{7}}
+\citation{Garey1979}
+\citation{Arora1998}
+\citation{Marathe1995}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Least Conflicting-Neighbor-Set-Weight Last Sequential Scheduling(LCNSWL-SS) algorithm}}{8}}
 \newlabel{Alg_LNSWL_SS}{{1}{8}}
 \newlabel{seqbegin}{{1}{8}}
 \newlabel{v_update}{{1}{8}}
@@ -76,45 +79,41 @@
 \newlabel{schend}{{1}{8}}
 \newlabel{ctsbegin}{{1}{8}}
 \newlabel{ctsend}{{1}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-B}}Step2: Energy Transmission Schedule Considering Energy Limits}{8}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-C}}Performance Ratios of the LNSWL-SS Algorithm}{8}}
-\citation{Garey1979}
-\citation{Arora1998}
-\citation{Marathe1995}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces The ETCS-S algorithm}}{9}}
-\newlabel{Alg_ETCS_S}{{2}{9}}
-\newlabel{line_timelen_time}{{2}{9}}
-\newlabel{line_timelen_emin}{{2}{9}}
-\newlabel{line_timelen_emax}{{2}{9}}
-\newlabel{slicelen2epsilon}{{2}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces An example without practical schedules assuring energy optimality of the WPTERD-Egy problem's solution.}}{9}}
-\newlabel{fig_full}{{3}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces The energy changing processes of the nodes along with time of a schedule for the example in Fig.3\hbox {}.}}{9}}
-\newlabel{fig_full_sch}{{4}{9}}
-\newlabel{lemma_valid_solution}{{3}{9}}
-\newlabel{lemma_2d_ratio3}{{4}{9}}
-\newlabel{eqn_pr_2d3_1}{{11}{9}}
-\newlabel{eqn_pr_2d3_2}{{12}{9}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Divide the top half disk into 3 sections.}}{10}}
-\newlabel{fig_2d3part}{{5}{10}}
-\newlabel{eqn_pr_2d3_3}{{13}{10}}
-\newlabel{lemma_3d_ratio12}{{5}{10}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Divide the top half sphere into 12 sections.}}{10}}
-\newlabel{fig_3d12part}{{6}{10}}
-\newlabel{lemma_2d3d_ratio}{{6}{10}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Divide the disk centered at $v_{*}$ with radius $r_1$ in 2D space into 6 sections.}}{10}}
-\newlabel{fig_2d6part}{{7}{10}}
-\@writefile{toc}{\contentsline {section}{\numberline {VII}Solve the WPTERD Problem}{10}}
-\newlabel{sec_algcombin}{{VII}{10}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Divide the sphere centered at $v_{*}$ with radius $r_1$ in 3D space into 24 sections.}}{11}}
-\newlabel{fig_3d24part}{{8}{11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-B}}Performance Ratio of the LCNSWL-SS Algorithm}{8}}
+\newlabel{lemma_valid_solution}{{3}{8}}
+\newlabel{lemma_2d_ratio3}{{4}{8}}
+\newlabel{eqn_pr_2d3_1}{{11}{8}}
+\newlabel{eqn_pr_2d3_2}{{12}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Divide the top half disk into 3 sections.}}{9}}
+\newlabel{fig_2d3part}{{3}{9}}
+\newlabel{eqn_pr_2d3_3}{{13}{9}}
+\newlabel{lemma_3d_ratio12}{{5}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Divide the top half sphere into 12 sections.}}{9}}
+\newlabel{fig_3d12part}{{4}{9}}
+\newlabel{lemma_2d3d_ratio}{{6}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Divide the disk centered at $v_{*}$ with radius $r_1$ in 2D space into 6 sections.}}{9}}
+\newlabel{fig_2d6part}{{5}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VI-C}}Step2: Energy Transmission Schedule Considering Energy Limits}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Divide the sphere centered at $v_{*}$ with radius $r_1$ in 3D space into 24 sections.}}{10}}
+\newlabel{fig_3d24part}{{6}{10}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces The ETCS-S algorithm}}{10}}
+\newlabel{Alg_ETCS_S}{{2}{10}}
+\newlabel{line_timelen_time}{{2}{10}}
+\newlabel{line_timelen_emin}{{2}{10}}
+\newlabel{line_timelen_emax}{{2}{10}}
+\newlabel{slicelen2epsilon}{{2}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces An example of the WPTERD-Egy problem without practical schedules assuring energy optimality.}}{10}}
+\newlabel{fig_full}{{7}{10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces The energy changing processes along time of the nodes of a schedule for the example in Fig.7\hbox {}.}}{11}}
+\newlabel{fig_full_sch}{{8}{11}}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Solve the WPTERD Problem}{11}}
+\newlabel{sec_algcombin}{{VII}{11}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces The ETDeCouple algorithm}}{11}}
 \newlabel{Alg_ETDeCouple}{{3}{11}}
 \@writefile{toc}{\contentsline {section}{\numberline {VIII}Performance Evaluation}{11}}
 \newlabel{sec_sim}{{VIII}{11}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VIII-A}}Performance Metrics}{11}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VIII-B}}Simulation Setup}{11}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VIII-C}}Simulation Results}{11}}
 \bibcite{Kurs2007}{1}
 \bibcite{Cannon2009}{2}
 \bibcite{Kang2006}{3}
@@ -135,6 +134,7 @@
 \bibcite{Garey1979}{18}
 \bibcite{Arora1998}{19}
 \bibcite{Marathe1995}{20}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {VIII-C}}Simulation Results}{12}}
 \@writefile{toc}{\contentsline {section}{\numberline {IX}Conclusion}{12}}
 \newlabel{sec_conclusion}{{IX}{12}}
 \@writefile{toc}{\contentsline {section}{References}{12}}
