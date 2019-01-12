@@ -1,7 +1,7 @@
-This is XeTeX, Version 3.1415926-2.2-0.9997.4 (MiKTeX 2.9) (preloaded format=xelatex 2018.10.5)  12 JAN 2019 11:13
+This is XeTeX, Version 3.1415926-2.2-0.9997.4 (MiKTeX 2.9) (preloaded format=xelatex 2018.10.5)  12 JAN 2019 11:10
 entering extended mode
-**WPTERD_color.tex
-(F:\01paper\02PaperWrite\7_latex\01WPT\tiicolor\WPTERD_color.tex
+**WPTERD_color_back.tex
+(F:\01paper\02PaperWrite\7_latex\01WPT\tiicolor\WPTERD_color_back.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for loaded.
 (F:\01paper\02PaperWrite\7_latex\01WPT\tiicolor\IEEEtran.cls
@@ -253,7 +253,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
 \@enLab=\toks25
 )
-(F:\01paper\02PaperWrite\7_latex\01WPT\tiicolor\WPTERD_color.aux)
+(F:\01paper\02PaperWrite\7_latex\01WPT\tiicolor\WPTERD_color_back.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
@@ -456,14 +456,18 @@ File: sim_n100_switchnum.eps Graphic file (type eps)
  <sim_n100_switchnum.eps> [12] [13
 
 ]
-(F:\01paper\02PaperWrite\7_latex\01WPT\tiicolor\WPTERD_color.aux) ) 
+(F:\01paper\02PaperWrite\7_latex\01WPT\tiicolor\WPTERD_color_back.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
  2716 strings out of 430486
- 37481 string characters out of 3191444
+ 37531 string characters out of 3191444
  105026 words of memory out of 3000000
  5829 multiletter control sequences out of 15000+200000
  33894 words of font info for 84 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 27i,15n,24p,2095b,583s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,15n,24p,2100b,583s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on WPTERD_color.pdf (13 pages).
+Output written on WPTERD_color_back.pdf (13 pages).
