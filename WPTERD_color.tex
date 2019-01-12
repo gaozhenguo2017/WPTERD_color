@@ -412,10 +412,10 @@ Now we analyze the harvested energy of $u_i$ from $u_j$ in $s_1$ and $s_2$, resp
 \begin{equation}
 \label{eqn_disjoint_proof}
 \begin{array}{rl}
-E_\text{C}(s_2)&{=}e_i(s_2,t_\text{E}(s_2)){+}e_j(s_2,t_\text{E}(s_2)\\
+E_\text{C}(s_2)&{=}e_i(s_2,t_\text{E}(s_2)){+}e_j(s_2,t_\text{E}(s_2))\\
 &\hspace{3mm}
-{+}\mathop{\sum}_{{k{\in}\mathcal{N}(n),k{\neq}i,j}}e_k(s_2,t_\text{E}(s_2)\\
-&{>}e_i(s_1,t_\text{E}(s_1)){+}e_j(s_1,t_E(s_1)))\\
+{+}\mathop{\sum}_{{k{\in}\mathcal{N}(n),k{\neq}i,j}}e_k(s_2,t_\text{E}(s_2))\\
+&{>}e_i(s_1,t_\text{E}(s_1)){+}e_j(s_1,t_E(s_1))\\
 &\hspace{3mm}
 {+}\mathop{\sum}_{{k{\in}\mathcal{N}(n),k{\neq}i,j}}e_k(s_1,t_\text{E}(s_1))\\
 &{=}E_\text{C}(s_1).
@@ -489,13 +489,13 @@ Problem \textbf{P2} (\textit{i.e.}, \textbf{P3}) is a standard linear programmin
 
 \section{Analyses of the WPTERD-Time Problem}
 \label{sec_wpter_time}
-Given an energy transmission schedule, we can group the schedule items into item sets $S^{i}{=}\{s^{i}_1, s^{i}_2, \ldots, s^{i}_{m_i}\}$, $i{\in}\mathcal{N}(n)$. Thus, $S^{i}$ contains all $m_i$ schedule items where node $u_i$ should transmit energy. Thus, the total energy transmission time length of $u_i$ contains $m_i$ time slices with length $t_\text{e}(s^{i}_j){-}t_\text{b}(s^{i}_j)$, $j{\in}\mathcal{N}(m_i)$.
+Given an energy transmission schedule, we can group the schedule items into sets $S^{i}{=}\{s^{i}_1, s^{i}_2, \ldots, s^{i}_{m_i}\}$, $i{\in}\mathcal{N}(n)$. Here set $S^{i}$ contains $m_i$ schedule items, where node $u_i$ should transmit energy. Thus, the total energy transmission period of $u_i$ contains $m_i$ time slices with lengths $t_\text{e}(s^{i}_j){-}t_\text{b}(s^{i}_j)$, $j{\in}\mathcal{N}(m_i)$.
 
-Once the energy transmission time lengths of the nodes have been determined in the previous section, the remanent work to solve the WPTERD problem is to schedule the nodes' energy transmission time slices along the time line so that the makespan of the schedule is minimum meanwhile assuring the energy limits are not violated during the process. This problem is the WPTERD-Time problem, which is what the second step will solve. Violating the upper limits leads to energy loss thus destroying the optimality in term of maximum final energy. Violating the lower limits leads to invalid schedule.
+Once the energy transmission time lengths of the nodes have been determined, the remanent work to solve the WPTERD problem is to schedule the nodes' energy transmission time slices along the time line, with the objection that the makespan of the schedule is minimum meanwhile no energy violations happen during the process. This is the WPTERD-Time problem, which is what the second step will solve. EUL-violations lead to energy loss thus destroying the energy optimality. ELL-violations lead to invalid schedule.
 
-To minimize the makespan of a schedule, we should try to make more energy transmission time slices overlap along the time line, but with the prerequisite that the time slices of neighboring nodes should not overlap with each other, otherwise the optimality in term of energy will be destroyed, as shown by Theorem \ref{theorem_schedule_disjoint}.
+To minimize the makespan of a schedule, we should try to make energy transmission time slices overlap along the time line. However, to preserve energy optimality of a schedule, the time slices of neighboring nodes should not overlap with each other, according to Theorem \ref{theorem_schedule_disjoint}.
 
-The WPTERD-Time problem can be stated formally as follow. \textit{Given a set of static nodes $U$ in a given space with energy harvesting coefficient matrix $\mathbf{C}{=}\{c(i,j)\}$, energy storage capacity limit list $e_\text{U}$ (vector), energy storage lower limit list $e_\text{L}$, energy transmitting power list $p$, beginning energy list $e_\text{B}$, expected energy list $e_\text{E}$, the energy transmission time length vector $t$, the task is to find a time slice schedule $s_c$ for the time length vector $t$ with minimum time span, meanwhile the energy limits are not violated during the whole process}. It can be formulated formally as Eq.\eqref{eqn_wpterd_time}.
+The WPTERD-Time problem can be stated formally as follow. \textit{Given a set of static nodes $\textbf{U}$ in a given space with energy harvesting coefficient matrix $\mathbf{C}{=}\{c(i,j)\}$, energy storage capacity limit list $\textbf{e}_\text{U}$ (vector), energy storage lower limit list $\textbf{e}_\text{L}$, energy transmitting power list $\textbf{p}$, beginning energy list $\textbf{e}_\text{B}$, energy expectation list $\textbf{e}_\text{E}$, energy transmission time length vector $\textbf{t}$, the task is to find a time slice schedule $s_c$ for $\textbf{t}$ with minimum makespan, meanwhile no energy violation happens during the process}. It can be formulated as Eq.\eqref{eqn_wpterd_time}.
 
 \begin{equation}
 \label{eqn_wpterd_time}
@@ -514,19 +514,20 @@ The WPTERD-Time problem can be stated formally as follow. \textit{Given a set of
 \end{array}
 \end{equation}
 
-In the WPTERD-Time problem, besides the restrictions of the energy limits, the main restrictions are that neighboring nodes' time slices should not overlap. The neighboring information of the WPTERD-Time problem can be more conveniently expressed as a graph $G(V,E)$ defined as Eq.\eqref{eqn_graph_conflict}. This graph is usually called \textit{conflict graph} in the literature of task scheduling.
+In the WPTERD-Time problem, besides the energy limit restrictions, the main restrictions are that neighboring nodes' time slices should not overlap. The neighboring information of the WPTERD-Time problem can be more conveniently expressed as a weighted graph $G(V,E,W)$ defined as Eq.\eqref{eqn_graph_conflict}. This graph is usually called \textit{conflict graph} in the literature of task scheduling.
 
 \begin{equation}
 \label{eqn_graph_conflict}
 \left\{
 \begin{array}{lcll}
-V(G){=}\{&u_i&|&i{\in}\mathcal{N}(n)\},\\
-E(G){=}\{&e(i,j)&|&c(i,j){+}c(j,i){>}0,i{\in}\mathcal{N}(n)\}.
+V(G){=}\{&u_i\hspace{-3mm}&|\hspace{1mm}i{\in}\mathcal{N}(n)\},\\
+E(G){=}\{&e(i,j)\hspace{-3mm}&|\hspace{1mm}c(i,j){+}c(j,i){>}0,i{\in}\mathcal{N}(n)\},\\
+W(G){=}\{&t(i)\hspace{-3mm}&|\hspace{1mm}i{\in}\mathcal{N}(n)\}.
 \end{array}
 \right.
 \end{equation}
 
-Besides the restrictions of the energy limits, the core work of the WPTERD-Time problem is an energy transmission task scheduling (ETTS) problem stated as follow: \textit{Given a set of $n$ energy transmission tasks with time lengths $t{=}[t_1,t_2,\ldots,t_n]$ and the corresponding conflict graph $G(V,E)$, to find an energy transmission task schedule with minimum makespan}. We can solve the WPTERD-Time problem basing on a solution to the ETTS problem. However, the ETTS problem is hard to solve, as shown in the following Theorem \ref{lemma_etts_npc}, which is proved by inducing from the well-known NP-hard graph coloring (GC) problem.
+The WPTERD-Time problem contains the following energy transmission task scheduling (ETTS) problem as its core: \textit{Given a set of $n$ energy transmission tasks with time vector $t{=}[t_1,t_2,\ldots,t_n]$ and the corresponding conflict graph $G(V,E,W)$, to find an energy transmission task schedule with minimum makespan}. The ETTS ignores the restrictions on energy violations, we can however solve the WPTERD-Time problem basing on a solution to the ETTS problem. Unfortunately, the ETTS problem is hard to solve, as shown in the following Theorem \ref{lemma_etts_npc}, which is proved by inducing from the well-known NP-hard graph coloring (GC) problem.
 
 \begin{theorem}
 \label{lemma_etts_npc}
@@ -553,23 +554,21 @@ Then it is easy to check that any schedule to the instance of the ETTS problem i
 \section{Solve the WPTERD-Time Problem}
 \label{sec_solve_wpter_time}
 
-Theorem~\ref{lemma_etts_npc} and Theorem~\ref{lemma_wpterd_time_npc} imply that no polynomial algorithms can solve the two problems optimally. We propose an approximate algorithm to solve it in two steps. In the first step, it solves the ETTS problem to obtain the collection of energy-transmission concurrent sets. An energy-transmission concurrent set is a set of nodes that transmit energy concurrently for a certain time length, this time length value is association of the set. Step 1 just returns a collection of energy-transmission concurrent sets, whereas the sequence of the energy transmissions is not determined. Instead, final energy transmission schedule is determined in the second step based on the energy-transmission concurrent set collection meanwhile considering the energy limits.
+Theorem~\ref{lemma_etts_npc} and Theorem~\ref{lemma_wpterd_time_npc} imply that no polynomial algorithms can solve the WPTERD-Time problem and the ETTS problem optimally. Our approach is to approximately solve it in two steps. In the first step, it solves the ETTS problem to obtain the collection of Energy-Transmission Concurrent (ETC) sets. An ETC set is a set of nodes that is scheduled to transmit energy concurrently for a certain time length associated with the set. Step 1 just returns a collection of ETC sets, whereas the sequence of the energy transmissions is postponed to the second step, which determines the operation sequence of the ETC sets assuring no EUL and ELL violations. The two steps are implemented as algorithms named as LNSWL-SS and ETCS-S, as shown in Fig.~\ref{fig_outline}.
 
 \subsection{Step1: The LNSWL-SS Algorithm for the ETTS Problem}
 
-Inspired by the smallest-degree-last algorithm for approximately solving the GC problem, we propose an three-step algorithm for the ETTS problem. In the first step, it determines a sequence in which nodes having least conflicting-neighbor-set-weight (CNSW) ordered at last. Here the CNSW of a node represents the sum of the weights of the node'`s conflicting neighbors. Then in the second step, it makes schedule decisions for the tasks greedily following this sequence. When making schedule decisions for each task, it is scheduled to run in any time slice not occupied by any of its conflicting neighbors. Finally it return the list of schedule items in format of (concurrent-task-set, time-length), such a schedule item represents a decision that the nodes in concurrent-task-set should transmit energy concurrently for a period with length of time-length. We name the algorithm as Least CNSW Last Sequential Scheduling (LNSWL-SS) algorithm.
+Inspired by the smallest-degree-last algorithm \cite{Marathe1995} for approximately solving the GC problem, we propose LNSWL-SS for the ETTS problem, which is a three-step algorithm. In the first step, it determines a sequence in which nodes having least neighbor-set-weight (NSW) are ordered at last. Hence we name it Least NSW Last Sequential Scheduling (LNSWL-SS) algorithm. Here a node's NSW means the sum of the weights of the node's neighbors. Then in the second step, it makes schedule decisions for the tasks greedily following this sequence. When making schedule decisions for each task, it is scheduled to run in any time slice not occupied by any of its neighbors already scheduled. Finally it returns the list of schedule items in format of 2-tuple (concurrent-task-set, time-length). A such schedule item represents a decision that the nodes in concurrent-task-set should transmit energy concurrently for time time-length.
 
-The pseudo code of LNSWL-SS is shown in Alg.~\ref{Alg_LNSWL_SS}. The while-loop between lines 2-7 implements the first stage. A property value of graph $G$, defined as $\varpi(G){\triangleq}\max_{H{\subseteq}G}(\min_{v{\in}H}w(N_{H,\text{y}}(v))$, is also obtained accompanyingly, which denotes the largest $\varpi$ such that $G$ contains a subgraph $H$ in which each node's CNSW is at least $\varpi$. The for-loop between code lines 8-10 implements the second step. Code lines 12-15 implements the last step.
+The pseudo code of LNSWL-SS is shown in Alg.~\ref{Alg_LNSWL_SS}. The while-loop between code lines 2-7 implements the first step. A property value of graph $G$, defined as $\varpi(G){\mathop{=}\limits^{\text{def}}}\max_{H{\subseteq}G}(\min_{v{\in}H}w(N_{H,\text{y}}(v))$, is also obtained accompanyingly, which denotes the largest $\varpi$ such that $G$ contains a subgraph $H$ in which each node's NSW is at least $\varpi$. The for-loop between code lines 8-10 implements the second step. Code lines 12-15 implements the last step.
 
 \begin{algorithm}[!htb]
-\caption{Least Conflicting-Neighbor-Set-Weight Last Sequential Scheduling(LNSWL-SS) algorithm}
+\caption{Least Neighbor-Set-Weight Last Sequential Scheduling (LNSWL-SS) algorithm}
 \begin{algorithmic}[1]\label{Alg_LNSWL_SS}
-    \REQUIRE $G(V,E,W)$: weighted conflict graph of the problem;\\
-    \ENSURE $v_\text{List}[1{:}n]$: the node list representing the scheduling sequence;\\
-    $S_\text{si}$: the set of schedule items;\\
+    \REQUIRE $G(V,E,W)$: weighted graph of the problem;\\
+    \ENSURE $\varpi(G)$; $S_\text{si}$: the set of schedule items;
     $S_\text{cts}$: the collection of (concurrent-task-set, time-length) schedule items;\\
-    $\varpi(G)$: $\varpi(G){\triangleq}\max_{H{\subseteq}G}(\min_{v{\in}H}w_\text{N}(H,v))$; \\
-    \STATE Initialize $G'{=}G(V,E)$, $\varpi(G){=}0$, $v_\text{List}{=}[]$;
+    \STATE Initialize $G'{=}G(V,E)$, $\varpi(G){=}0$, $v_\text{List}{=}[ ]$;
     \WHILE {$G'{\neq}\emptyset$}\label{seqbegin}
         \STATE $\varpi(G){=}\max(\varpi(G),\min_{v_j{\in}V(G')}w_\text{N}(G',v_j))$;\label{v_update}
         \STATE $v_i{=}\arg\min_{v_j{\in}V(G')}w_\text{N}(G',v_j)$; $v_{List}=[v_i,v_\text{List}]$;
@@ -577,9 +576,9 @@ The pseudo code of LNSWL-SS is shown in Alg.~\ref{Alg_LNSWL_SS}. The while-loop 
         \STATE $G'{=}G(V',E')$;
     \ENDWHILE \label{seqend}
     \FOR {$i{=}1{:}n$} \label{schbegin}
-        \STATE Assign all time slices unused by any scheduled items of the nodes in $N(G',v_i)$, (i.e., the conflicting neighboring nodes of $v_i$ in $G'$), and insert the corresponding schedule items into $S_\text{si}$;
+        \STATE Assign all time slices unused by any scheduled items of the nodes in $N(G',v_i)$, and insert the corresponding schedule items into $S_\text{si}$;
     \ENDFOR \label{schend}
-    \STATE Sort the beginning and ending time values of all schedule items in $S_\text{si}$ into a list $T_\text{s}(s_\text{c}){=}[t_1,t_2,\ldots,t_{L}]$ in ascending order(here we assume the list has length $L$), we thus obtain $L{-}1$ time slots with slot $i$ occupies time interval $(t_{i},t_{i{+}1}]$.\label{ctsbegin}
+    \STATE Sort the beginning and ending time values of all items in $S_\text{si}$ into a list $T_\text{s}(s_\text{c}){=}[t_1,t_2,\ldots,t_{L}]$ in ascending order(here assume its length is $L$), we thus obtain $L{-}1$ time slices with slice $i$ occupies time interval $(t_{i},t_{i{+}1}]$.\label{ctsbegin}
     \FOR {$1{=}1{:}1{:}L{-}1$}
         \STATE Obtain the set $U_\text{T}(i)$ of concurrent tasks in time slot $i$;
         \STATE $S_\text{cts}(i).CTS{=}U_\text{T}(i)$;$S_\text{cts}(i).tLen{=}t_{i{+}1}{-}t_{i}$;
@@ -710,7 +709,9 @@ With these adaptations, we can obtain the lemma by applying the analysis used in
 
 \subsection{Step2: Schedule Considering Energy Limits}
 
-This step determines a \textit{(set,time)} sequence of energy transmission time slices, where the \textit{set} in a sequence item determines a set of nodes that should transmit energy simultaneously, and the \textit{time} in the item determines the length of the time slice. We propose the Energy-Transmission Concurrent Set Scheduling (ETCS-S) algorithm to determine the schedule sequence making use of the collection of concurrent task sets obtained by LNSWL-SS in Alg.~\ref{Alg_LNSWL_SS}.
+This step determines a \textit{(set,time)} sequence of energy transmission time slices, where the \textit{set} in a sequence item determines a set of nodes that should transmit energy simultaneously, and the \textit{time} in the item determines the length of the time slice. We propose the Energy-Transmission Concurrent Set Scheduling (ETCS-S) algorithm to determine the schedule sequence making use of the collection of concurrent task sets obtained by LNSWL-SS.
+
+The pseudo code of ETCS-S is shown in Alg.~\ref{Alg_ETCS_S}. It firstly inserts all items in $S_\text{cts}$ obtained by LNSWL-SS into a queue. We call these items as candidate schedule items. ETCS-S determines the available time-slice length $t3$ for the candidate schedule items in the queue in turn (code lines 4-14). $t3$ is mainly determined by whichever is the earliest among the three values: (1) the earliest time that one node's remaining time (which means the difference between the required time length and the accumulated time lengths of already scheduled items for the node) becomes 0 (code line 4); (2)the earliest time that some node reaches its lower energy limit $e_\text{L}$ (code line 5); (3) the earliest time that some node reaches its upper energy limit, which is determined using the bisection search method when necessary (code lines 8-14). The other lines update the candidate schedule items correspondingly and generating new candidate schedule items when necessary determined using a threshold parameter $num_\text{lim}$.
 
 \begin{algorithm}[!htb]
 \caption{The ETCS-S algorithm}
@@ -751,42 +752,40 @@ This step determines a \textit{(set,time)} sequence of energy transmission time 
 \end{algorithmic}
 \end{algorithm}
 
-The This step determines a \textit{(set,time)} sequence of energy transmission time slices, where the \textit{set} in a sequence item determines a set of nodes that should transmit energy simultaneously, and the \textit{time} in the item determines the length of the time slice. We propose the Energy-Transmission Concurrent Set Scheduling (ETCS-S) algorithm to determine the schedule sequence making use of the collection of concurrent task sets obtained by LNSWL-SS in Alg.~\ref{Alg_LNSWL_SS}.
-pseudo code of ETCS-S is shown in Alg.~\ref{Alg_ETCS_S}. It firstly inserts all items in $S_\text{cts}$ obtained by LNSWL-SS into a queue. We call these items as candidate schedule items. ETCS-S determines the available time-slice length $t3$ for the candidate schedule items in the queue in turn (code lines 4-14). $t3$ is mainly determined by whichever is the earliest among the three values: (1) the earliest time that one node's remaining time (which means the difference between the required time length and the accumulated time lengths of already scheduled items for the node) becomes 0 (code line 4); (2)the earliest time that some node reaches its lower energy limit $e_\text{L}$ (code line 5); (3) the earliest time that some node reaches its upper energy limit, which is determined using the bisection search method when necessary (code lines 8-14). The other lines update the candidate schedule items correspondingly and generating new candidate schedule items when necessary determined using a threshold parameter $num_\text{lim}$.
-
 There are cases that two neighboring nodes are both with full energy $e_\text{B}{=}e_\text{U}$ before the re-distribution. In this case, the bisection search (code lines 9-14 in Alg.~\ref{Alg_ETCS_S}) will fail to return a positive value. In fact, there is no way to avoid EUL-violation while keeping the energy optimality. One such case is shown in Fig.\ref{fig_full}. The parameters are as follows: energy upper limit $e_\text{U}{=}[10,10,10]$, energy at the beginning $e_\text{B}{=}[10,10,1]$, energy expectation $e_\text{E}{=}[6,6,2]$, and energy transmission power $p{=}[1,1,1]$. It is easy to check that the optimal energy transmission time-length solution to the corresponding WPTERD-Egy problem is $t{=}[5,5,0]$. However, whichever of the two nodes, $u_1$ and $u_2$, performs the energy transmission first, EUL-violation will happen at the other node. To solve this dilemma, we compromise the energy optimality by allowing a short time period $\epsilon$ for energy loss/overflow (code lines 11-13). After that period, the two nodes can perform energy transmissions alternatively: one node keeps transmitting until the other reaches its EUL, or its energy transmission time expectation is used up. We call this scheme as $\epsilon${-}scheme. The energy changing processes along time of the nodes using this scheme are shown in Fig~\ref{fig_full_sch}. Since that energy harvesting coefficient is quite small, the time-length of a node's continuous energy transmission time slice will increase rapidly. With small enough $\epsilon$, the amount of energy loss may be trivial. Indeed, the energy loss approaches 0 as $\epsilon{\rightarrow}0$.
 
 \begin{figure}[htb]
-\centering{\includegraphics[width=0.38\textwidth]{fig3_2full.eps}}
+\centering{\includegraphics[width=0.30\textwidth]{fig3_2full.eps}}
 \caption{An example of the WPTERD-Egy problem without practical schedules assuring energy optimality.}
 \label{fig_full}
 \end{figure}
 
 \vspace{-4mm}
 \begin{figure}[htb]
-\centering{\includegraphics[width=0.42\textwidth]{fig4_2full_sch.eps}}
+\centering{\includegraphics[width=0.35\textwidth]{fig4_2full_sch.eps}}
 \caption{The energy changing processes along time of the nodes of a schedule for the example in Fig.\ref{fig_full}.}
 \label{fig_full_sch}
 \end{figure}
 
 \section{Solve the WPTERD Problem}
 \label{sec_algcombin}
-Based on previous analyses results and the preliminary algorithms proposed, we can thus solve the WPTERD problem by decoupling the problem into WPTERD-Egy problem and WPTERD-Time problem. The two problems focus exclusively on the optimization in energy and time, respectively. Based on this approach, we propose our algorithm named Graph Coloring inspired Energy-Time Decoupling (GC-EgyTimeD) algorithm. GC-EgyTimeD firstly solve the \textbf{P3} problem using mature LP optimization tools to obtain $\mathbf{t}$. Then, it obtains $S_\text{cts}$ by using the LNSWL-SS algorithm to solve the corresponding ETTS problem, and at last generates a schedule $TS_\text{ss}$ from $S_\text{cts}$ by using the ETCS-S algorithm. The pseudo code of GC-EgyTimeD is shown in Alg.\ref{Alg_EgyTimeD}.
+Based on the analyses in previous sections, we propose an algorithm to solve the WPTERD problem by combining the preliminary algorithms proposed. The outline of the final algorithm is already demonstrated in Fig.~\ref{fig_outline}. The algorithm decouples the energy-time joint optimization into the WPTERD-Egy problem and the WPTERD-Time problem, which focus exclusively on the optimization in energy and time, respectively. The graph-coloring inspired LNSWL-SS algorithm is the core of our algorithm, hence we name it Graph-Coloring inspired Energy-Time decoupling (GC-EgyTimeD) algorithm. The pseudo code of GC-EgyTimeD is shown in Alg.\ref{Alg_EgyTimeD}.  GC-EgyTimeD firstly solve the \textbf{P3} problem using mature LP optimization tools to obtain $\mathbf{t}$. Then, it obtains $S_\text{cts}$ by using the LNSWL-SS algorithm to solve the corresponding ETTS problem, and at last generates a schedule $ST_\text{ss}$ from $S_\text{cts}$ by using the ETCS-S algorithm.
+
 
 \begin{algorithm}[!htb]
 \caption{The GC-EgyTimeD algorithm}
 \begin{algorithmic}[1]\label{Alg_EgyTimeD}
     \REQUIRE $\mathbf{e_B}, \mathbf{e_U}, \mathbf{e_L}, \mathbf{e_E}, \mathbf{C}, \mathbf{p}$;\\
-    \ENSURE $TS_\text{ss}$: the time-set schedule sequence;\\
-    \STATE $[\mathbf{t}]${=}solveP3($\mathbf{e_B}, \mathbf{e_O},\mathbf{e_U},\mathbf{C}, \mathbf{p}$);\%using  to solve and obtain $\mathbf{t}$;\\
-    \STATE create $G(V,E,W)$ for the corresponding ETTS problem using $\mathbf{t}$;
+    \ENSURE $ST_\text{ss}$: the (set,time) schedule sequence;\\
+    \STATE $[\mathbf{t}]${=}solveP3($\mathbf{e_B}, \mathbf{e_O},\mathbf{e_U},\mathbf{C}, \mathbf{p}$);\\
+    \STATE Construct ETTS problem using $\mathbf{t}$ and create $G(V,E,W)$;
     \STATE $[S_\text{cts}]{=}$LNSWL-SS$(G(V,E,W)$;
-    \STATE $[TS_\text{ss}]{=}$ETCS-S$(S_\text{cts},\mathbf{e_B}, \mathbf{e_U}, \mathbf{e_L}, \mathbf{e_E}, \mathbf{C}, \mathbf{p})$;
-    \STATE \textbf{return} $TS_\text{ss}$;
+    \STATE $[ST_\text{ss}]{=}$ETCS-S$(S_\text{cts},\mathbf{e_B}, \mathbf{e_U}, \mathbf{e_L}, \mathbf{e_E}, \mathbf{C}, \mathbf{p})$;
+    \STATE \textbf{return} $ST_\text{ss}$;
 \end{algorithmic}
 \end{algorithm}
 
-\textit{By using the GC-EgyTimeD algorithm to carefully schedule the energy transmissions of the nodes in WSNs, we are able redistribute energy in the network, which implicitly realizes the multi-hop energy flow efficiently but easily. Meanwhile, the broadcasting nature of radio signals is well exploited to achieve the most energy efficient way to conduct the energy redistribution}.
+\textit{By using GC-EgyTimeD to carefully schedule the energy transmissions of the nodes in WSNs, we are able redistribute energy in the network, which implicitly realizes the multi-hop energy flow efficiently yet easily. Meanwhile, the broadcasting nature of radio signals is well exploited to achieve the most energy efficiency.}
 
 \section{Performance Evaluation}
 \label{sec_sim}
