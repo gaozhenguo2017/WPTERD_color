@@ -110,7 +110,7 @@ Our main contributions in this paper are as follows:
 {|p{0.10\textwidth}|p{0.34\textwidth}|}
 \hline
 \hline
-\textbf{Abbreviations} & Whole words/sentences\\
+\textbf{Abbreviations} & Whole words/centences\\
 \hline
 \hline
 WPT & Wireless Power Transfer;\\
@@ -746,6 +746,21 @@ The pseudo code of ETCS-S is shown in Alg.~\ref{Alg_ETCS_S}. It firstly inserts 
      \STATE \textbf{return} $ST_\text{ss}$;
 \end{algorithmic}
 \end{algorithm}
+
+There are cases that two neighboring nodes are both with full energy $e_\text{B}{=}e_\text{U}$ before the re-distribution. In this case, the bisection search (code lines 9-14 in Alg.~\ref{Alg_ETCS_S}) will fail to return a positive value. In fact, there is no way to avoid EUL-violation while keeping the energy optimality. One such case is shown in Fig.\ref{fig_full}. The parameters are as follows: energy upper limit $e_\text{U}{=}[10,10,10]$, energy at the beginning $e_\text{B}{=}[10,10,1]$, energy expectation $e_\text{E}{=}[6,6,2]$, and energy transmission power $p{=}[1,1,1]$. It is easy to check that the optimal energy transmission time-length solution to the corresponding WPTERD-Egy problem is $t{=}[5,5,0]$. However, whichever of the two nodes, $u_1$ and $u_2$, performs the energy transmission first, EUL-violation will happen at the other node. To solve this dilemma, we compromise the energy optimality by allowing a short time period $\epsilon$ for energy loss/overflow (code lines 11-13). After that period, the two nodes can perform energy transmissions alternatively: one node keeps transmitting until the other reaches its EUL, or its energy transmission time expectation is used up. We call this scheme as $\epsilon${-}scheme. The energy changing processes along time of the nodes using this scheme are shown in Fig~\ref{fig_full_sch}. Since that energy harvesting coefficient is quite small, the time-length of a node's continuous energy transmission time slice will increase rapidly. With small enough $\epsilon$, the amount of energy loss may be trivial. Indeed, the energy loss approaches 0 as $\epsilon{\rightarrow}0$.
+
+\begin{figure}[htb]
+\centering{\includegraphics[width=0.30\textwidth]{fig3_2full.eps}}
+\caption{WPTERD instance without practical schedules assuring energy optimality.}
+\label{fig_full}
+\end{figure}
+
+\vspace{-4mm}
+\begin{figure}[htb]
+\centering{\includegraphics[width=0.35\textwidth]{fig4_2full_sch.eps}}
+\caption{Energy changing processes along time of a $\epsilon${-}scheme schedule.}
+\label{fig_full_sch}
+\end{figure}
 
 \section{Solve the WPTERD Problem}
 \label{sec_algcombin}

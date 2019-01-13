@@ -76,18 +76,18 @@ Wireless energy redistribution problem, wireless power transfer, task scheduling
 % Here we have the typical use of a "T" for an initial drop letter
 % and "HIS" in caps to complete the first word.
 
-\IEEEPARstart{W}{ireless} Power Transfer (WPT) is the transmission of electric energy from a power source to a receiver without a conductor. With recent advances in WPT, it is possible to charge sensors in a relative long distance (${>}10$m away)\cite{Guo2017}. It has been validated that a sensor could harvest radio power of 6mW over a distance of 12 meters from a Wireless Charger (WC) transmitting with 4W power. The received radio power is 20mW and the transition efficiency is 30 percent~\cite{Nintana2012}. The breakthroughs in WPT technology~\cite{Kurs2007, Cannon2009} open up a new dimension to prolonging the lifetime of wireless sensor networks (WSNs). Many research efforts have been devoted to exploiting WPT to enhance WSNs~\cite{Xiang2013}-\cite{Madhja2017}. Some works focus on using WCs to power the nodes in WSNs using WPT. Due to the limited number of WCs, some nodes may could not obtain power from the WCs directly. This is true even if there are mobile WCs because of reachability restrictions or temporal failure. Hence, WPT based Energy ReDistribution (WPTERD) is a core building block for supporting perpetual WSNs.
+\IEEEPARstart{W}{ireless} Power Transfer (WPT) is the transmission of electric energy from a power source to a receiver without a conductor. With recent advances in WPT, it is possible to charge sensors in a relative long distance (${>}10$m away)\cite{Guo2017}. It has been validated that a sensor could harvest radio power of 6mW over a distance of 12 meters from a Wireless Charger (WC) transmitting with 4W power. The received radio power is 20mW and the transition efficiency is 30 percent~\cite{Nintana2012}. The breakthroughs in WPT technology~\cite{Kurs2007, Cannon2009} open up a new dimension to prolonging the lifetime of wireless sensor networks (WSNs). Many research efforts have been devoted to exploiting WPT to enhance WSNs~\cite{Xiang2013}-\cite{Madhja2017}. Some works focus on using WCs to power the nodes in WSNs using WPT. Due to the limited number of WCs, some nodes may not able to obtain power from the WCs directly. This is true even if there are mobile WCs because of reachability restrictions or temporal failure. Hence, WPT based Energy ReDistribution (WPTERD) is a core building block for supporting perpetual WSNs.
 
 Some recent efforts have been devoted to the application of energy exchanging among nodes in peer-to-peer mode when nodes coming into vicinity of each other during moving, so as to make the nodes' remanent energy more balanced. However, the intrinsic broadcasting feature of energy transmitting signals is not exploited, and hence leads to lower energy efficiency.
 
 In this paper, we focus on the WPTERD problem: given a WSN consisting of nodes equipped with wireless power transceivers and limited energy storages with some initial energy, each node has its energy expectation, the task is to redistribute the energy in the WSN among all nodes through WPT, assuring that each node's final energy after the redistribution do not below its corresponding energy expectation, meanwhile the energy loss is minimized and the time-length (\textit{i.e.}, makespan) of the energy redistribution process is minimized.
 
 
-We solve the WPTERD problem using a two-step approach which decouples the joint energy-time optimization into to two sub-problems named WPTERD-Egy and WPTERD-Time, as outlined in Fig.~\ref{fig_outline}. The two problems focus exclusively on the optimization in energy and time, respectively. In the first step, basing on two proved properties resulted from the widely adopted \textit{energy harvesting additive assumption}, the WPTERD-Egy problem is formalized as a Linear Programming (LP) problem, and can thus be solved to obtain the optimal time-lengths of the nodes' energy transmissions. The remanent of the WPTERD problem thus becomes the WPTERD-Time problem, which is a task scheduling problem of the nodes' energy transmissions with some restrictions of not violating some energy limits. At the core of the WPTERD problem is a Energy Transmission Task Scheduling (ETTS) problem, where the restrictions of not violating energy limits are absent. We prove that both WPTERD-Time and ETTS are NP-hard, and propose an algorithm named Least neighbor-set-weight Last Sequential Scheduling (LNSWL-SS) for solving the ETTS problem, inspired by a well known graph coloring algorithm. We build our algorithm Graph Coloring inspired Egy-Time Decoupling (GC-EgyTimeD) basing on LNSWL-SS and solutions to WPTERD-Egy and WPTERD-Time. Numerical simulations illustrate the effectiveness and efficiency of GC-EgyTimeD, which return schedules with minimum energy loss and approximately minimum makespan. Main abbreviations are listed in Table~\ref{T0} for reference.
+We solve the WPTERD problem using a two-step approach which decouples the joint energy-time optimization into to two sub-problems named WPTERD-Egy and WPTERD-Time, as outlined in Fig.~\ref{fig_outline}. The two problems focus exclusively on the optimization in energy and time, respectively. In the first step, basing on two proved properties resulted from the widely adopted \textit{energy harvesting additive assumption}, the WPTERD-Egy problem is formalized as a Linear Programming (LP) problem, and can thus be solved to obtain the optimal time-lengths of the nodes' energy transmissions. The remanent of the WPTERD problem thus becomes the WPTERD-Time problem, which is a task scheduling problem of the nodes' energy transmissions with some restrictions of not violating some energy limits. At the core of the WPTERD problem is a Energy Transmission Task Scheduling (ETTS) problem, where there are no energy-limit restrictions. We prove that both WPTERD-Time and ETTS are NP-hard, and propose an algorithm named Least neighbor-set-weight Last Sequential Scheduling (LNSWL-SS) for solving the ETTS problem, inspired by a well-known graph coloring algorithm. We build our algorithm Graph Coloring inspired Egy-Time Decoupling (GC-EgyTimeD) basing on LNSWL-SS and solutions to WPTERD-Egy and WPTERD-Time. Numerical simulations illustrate the effectiveness and efficiency of GC-EgyTimeD, which return schedules with minimum energy loss and approximately minimum makespan. Main abbreviations are listed in Table~\ref{T0} for reference.
 
 \begin{figure}[htb]
 \centering{\includegraphics[width=0.48\textwidth]{fig0_outline.eps}}
-\caption{Outline of the GC-EgyTimeD algorithm to the WPTERD problem.}
+\caption{Outline of the GC-EgyTimeD algorithm for the WPTERD problem.}
 \label{fig_outline}
 \end{figure}
 
@@ -110,33 +110,34 @@ Our main contributions in this paper are as follows:
 {|p{0.10\textwidth}|p{0.34\textwidth}|}
 \hline
 \hline
-\textbf{Abbreviations} & Whole words/centences\\
+\textbf{Abbreviations} & Whole words/sentences and meanings\\
 \hline
 \hline
 WPT & Wireless Power Transfer;\\
 \hline
-WPTERD & Wireless Power Transfer based Energy Re-Distribution;\\
+WPTERD & Wireless Power Transfer based Energy Re-Distribution problem;\\
 \hline
-WPTERD-Egy & WPTERD problem with only the energy lost minimization objective;\\
+WPTERD-Egy & WPTERD problem with only the minimum energy lost objective;\\
 \hline
 WPTERD-Time & WPTERD problem with only the minimum makespan objective;\\
 \hline
-ETTS & Energy Transmission Task Scheduling problem, which is the core of WPTERD-Time but without the energy restrictions imposed by energy storage limitations;\\
+ETTS & Energy Transmission Task Scheduling problem, which is the core of WPTERD-Time but without the restrictions caused by energy limits;\\
 \hline
-LNSWL-SS & Least conflicting-neighbor-set-weight Last Sequential Scheduling algorithm for solving ETTS;\\
+LNSWL-SS & Least neighbor-set-weight Last Sequential Scheduling algorithm, which solves ETTS;\\
 \hline
-ETCS-S & energy-transmission concurrent set scheduling algorithm, which together with LNSWL-SS, solves WPTERD-Time;\\
+ETCS-S & Energy Transmission Concurrent Set Scheduling algorithm, which together with LNSWL-SS solves WPTERD-Time;\\
 \hline
-GC-EgyTimeD & Graph Coloring inspired Egy-Time Decoupling algorithm  for solving WPTERD;\\
+GC-EgyTimeD & Graph Coloring inspired Energy-Time Decoupling algorithm, which solves WPTERD;\\
 \hline
-NSW & neighbor-set-weight;\\
+NSW & Neighbor-Set-Weight, which is the sum of the weights of a node's neighbors as well as the node itself;\\
 \hline
-EUL,ELL & energy-upper-limit, energy-lower-limit;\\
+EUL,ELL & Energy-Upper-Limit, Energy-Lower-Limit;\\
 \hline
 \hline
 \end{tabular}
 }
 \end{table}
+
 
 The rest of the paper is organized as follows. Related work is discussed in Section~\ref{sec_relwork}. The models of the problem are provided in Section~\ref{sec_model}. The WPTERD-Egy problem is analyzed and solved in Section \ref{sec_wpter_egy}. In Section~\ref{sec_wpter_time}, the WPTERD-Time problem is analyzed and the NP-hard property of ETTS and WPTERD-Time are proved. In Section~\ref{sec_solve_wpter_time}, we provide LNSWL-SS and prove its approximation ratios. GC-EgyTimeD is provided in Section~\ref{sec_algcombin}. Simulation results are provided and discussed in Section~\ref{sec_sim}. Finally a conclude is made in Section~\ref{sec_conclusion}.
 
@@ -154,13 +155,13 @@ The works in \cite{Guo2017,Guo2016} also devoted to WSNs with multiple WCs, but 
 
 Multi-hop power transmissions are quite different from multi-hop data transmissions. Different data transmissions are not equivalent since they convey different data. For power transmissions, however, energy from any source are equivalent, we need not explicitly construct paths and restrict energy flows along a certain path. In some sense, opportunistic routing in the wireless network routing realm is more suitable for energy transmission. Hence, finding other mechanisms of multi-hop WPT for charging WSNs is of importance.
 
-\subsection{Energy Redistribution Among Nodes}
+\subsection{Energy Redistribution among Nodes}
 
 Some series of recent works \cite{Bulut2014,Niko2016,Niko2017,Madhja2016,Madhja2017} focus on a problem for mobile social and sensor networks consisting of human-carried mobile devices. In these works, energy redistribution is realized using peer-to-peer energy exchange.
 
 Firstly in \cite{Bulut2014}, the authors investigated the problem of selecting a subset of nodes to charge the others such that all nodes can continue normal operations without battery depletion. In \cite{Niko2016}, the authors investigated the problem of efficiently reaching an energy balance among nodes distributively though peer-to-peer energy exchange. The problem was investigated in cases of two different assumptions: loss-less power exchange and lossy power exchange. Three energy exchange protocols were designed, analyzed and evaluated there. Then the problem was extended to the weighted version in \cite{Niko2017}. The uniform balance version and the weighted balance version of the peer-to-peer energy redistribution problem among star-backbone nodes in WSNs were investigated in \cite{Madhja2016} and \cite{Madhja2017}, respectively.
 
-In these works, energy exchange only happens when two nodes coming into vicinity of each other because of the moving of the person carrying the node. As a consequence, their analyses and algorithms do not exploit the intrinsic broadcasting nature of wireless signals as well as the ability of WPT's transferring energy over a distance. Ignoring the possibility of multiple nodes simultaneously harvesting energy from a single node's energy transmitting signals inevitably leads to energy in-efficiency.
+In these works, energy exchange only happens when two nodes coming into vicinity of each other because of the moving of the person carrying the node. As a consequence, their analyses and algorithms do not exploit the intrinsic broadcasting nature of wireless signals as well as the ability of WPT's transferring energy over a distance. Ignoring the possibility of multiple nodes simultaneously harvesting energy from a single node's energy transmitting signals inevitably leads to energy low-efficiency.
 
 
 \section{System Model}
@@ -177,7 +178,7 @@ We are required to redistribute the energy among the nodes by using WPT, with th
 \label{T1}
 \footnotesize{
 \begin{tabular}
-{|p{0.05\textwidth}|p{0.38\textwidth}|}
+{|p{0.07\textwidth}|p{0.36\textwidth}|}
 \hline
 \hline
 \textbf{Notation} & Meaning\\
@@ -185,39 +186,39 @@ We are required to redistribute the energy among the nodes by using WPT, with th
 \hline
 $\mathcal{N}(n)$ & The set of positive integers $\{1,2,\ldots,n\}$;\\
 \hline
-$\mathcal{R^{+}}$ & The set of positive real value in range $[0,{+}\inf]$;\\
-\hline
-$p, \mathbf{p}$ & The function/list/vector of the node's constant energy transmitting power, node $u_i$'s energy transmit power is $p(i)$;\\
+$p, \mathbf{p}$ & The list/vector of the nodes' energy transmission power, where node $u_i$'s energy transmission power is $p(i)$;\\
 \hline
 $[.]^{\text{T}}$ & Transpose operation of the input matrix or vector;\\
 \hline
 $\mathbf{C}$ & The matrix of the energy harvesting coefficients $[c(i,j]_{i,j{\in}\mathcal{N}(n)}$, c(i,j) is the energy harvesting coefficient for node $u_i$ receives energy from $u_j$;\\
 \hline
-$\mathbf{t}$ & The vector of the nodes' energy transmitting time-lengths $\mathbf{t}{\mathop{=}\limits^\text{def}}[t(1),t(2),\ldots,t(n)]^{\text{T}}{=}[t_1),t_2),\ldots,t_n]^{\text{T}}$;\\
+$\mathbf{t}$ & The vector of the nodes' energy transmission time-lengths $\mathbf{t}{\mathop{=}\limits^\text{def}}[t(1),t(2),\ldots,t(n)]^{\text{T}}{=}[t_1),t_2),\ldots,t_n]^{\text{T}}$;\\
 \hline
-$e_\text{B}, \mathbf{e_\text{B}}$ & The function/list/vector of the nodes' energy at the beginning time where it is $e_\text{B}(i)$ for $u_i$.  $\mathbf{e_\text{B}}{\mathop{=}\limits^\text{def}}[e_\text{B}(1),e_\text{B}(2),\ldots,e_\text{B}(n)]^{\text{T}}$;\\
+$e_\text{B}, \mathbf{e_\text{B}}$ & The list/vector of the nodes' beginning energy $\mathbf{e_\text{B}}{\mathop{=}\limits^\text{def}}[e_\text{B}(1),e_\text{B}(2),\ldots,e_\text{B}(n)]^{\text{T}}$;\\
 \hline
-$e_\text{F}, \mathbf{e_\text{F}}$ & The function/list/vector of the nodes' final energy after the energy redistribution process finishes where it is $e_\text{F}(i)$ for $u_i$. $\mathbf{e_\text{F}}{\mathop{=}\limits^\text{def}}[e_\text{F}(1),e_\text{F}(2),\ldots,e_\text{F}(n)]^{\text{T}}$;\\
+$e_\text{F}, \mathbf{e_\text{F}}$ & The list/vector of the nodes' final energy $\mathbf{e_\text{F}}{\mathop{=}\limits^\text{def}}[e_\text{F}(1),e_\text{F}(2),\ldots,e_\text{F}(n)]^{\text{T}}$;\\
 \hline
-$e_\text{U}, \mathbf{e_\text{U}}$ & The function/list/vector of the nodes' energy upper limits where it is $e_\text{U}(i)$ for $u_i$. $\mathbf{e_\text{U}}{\mathop{=}\limits^\text{def}}[e_\text{U}(1),e_\text{U}(2),\ldots,e_\text{U}(n)]^{\text{T}}$;\\
+$e_\text{U}, \mathbf{e_\text{U}}$ & The list/vector of the nodes' energy upper limits $\mathbf{e_\text{U}}{\mathop{=}\limits^\text{def}}[e_\text{U}(1),e_\text{U}(2),\ldots,e_\text{U}(n)]^{\text{T}}$;\\
 \hline
-$e_\text{L}, \mathbf{e_\text{L}}$ & The function/list/vector of the nodes' energy lower limits where it is $e_\text{L}(i)$ for $u_i$. $\mathbf{e_\text{L}}{\mathop{=}\limits^\text{def}}[e_\text{L}(1),e_\text{L}(2),\ldots,e_\text{L}(n)]^{\text{T}}$;\\
+$e_\text{L}, \mathbf{e_\text{L}}$ & The list/vector of the nodes' energy lower limits $\mathbf{e_\text{L}}{\mathop{=}\limits^\text{def}}[e_\text{L}(1),e_\text{L}(2),\ldots,e_\text{L}(n)]^{\text{T}}$;\\
 \hline
-$e_\text{E}, \mathbf{e_\text{E}}$ & The function/list/vector of the nodes' energy expectations where it is $e_\text{E}(i)$ for $u_i$. $\mathbf{e_\text{E}}{\mathop{=}\limits^\text{def}}[e_\text{E}(1),e_\text{E}(2),\ldots,e_\text{E}(n)]^{\text{T}}$;\\
+$e_\text{E}, \mathbf{e_\text{E}}$ & The list/vector of the nodes' energy expectations $\mathbf{e_\text{E}}{\mathop{=}\limits^\text{def}}[e_\text{E}(1),e_\text{E}(2),\ldots,e_\text{E}(n)]^{\text{T}}$;\\
 \hline
-$e_\text{E,L}, \mathbf{e_\text{E,L}}$ & The function/list/vector of the nodes' lower limits of energy expectations where it is $e_\text{E,L}(i)$ for $u_i$. $\mathbf{e_\text{E,L}}{\mathop{=}\limits^\text{def}}[e_\text{E,L}(1),e_\text{E,L}(2),\ldots,e_\text{E,L}(n)]^{\text{T}}$;\\
+$e_\text{E,L}, \mathbf{e_\text{E,L}}$ & The list/vector of the nodes' energy expectation lower limits $\mathbf{e_\text{E,L}}{\mathop{=}\limits^\text{def}}[e_\text{E,L}(1),e_\text{E,L}(2),\ldots,e_\text{E,L}(n)]^{\text{T}}$;\\
+\hline
+$e_\text{E,U}, \mathbf{e_\text{E,U}}$ & The list/vector of the nodes' energy expectation upper limits $\mathbf{e_\text{E,U}}{\mathop{=}\limits^\text{def}}[e_\text{E,U}(1),e_\text{E,U}(2),\ldots,e_\text{E,U}(n)]^{\text{T}}$;\\
 \hline
 $\mathbf{1}$ or $\mathbf{0}$ & Proper size column vectors with elements all one or all zero, respectively;\\
 \hline
 $\mathbf{1}_{condi}$ & The indication function of condition $condi$, which has value 1 when $condi$ is true, and 0 otherwise;\\
 \hline
-$N(i)$ & The set of neighbors of node $u_i$, two nodes $u_i$ and $u_j$ are neighbors of each other if $c(i,j){+}c(j,i){>}0$ ;\\
+$w(G)$ & The sum of the weights of the nodes in graph/set $G$;\\
 \hline
-$N_\text{NSW}(v,H)$,$N_\text{NSW,n}(v,H)$ & The set of node $v$'s neighbors in graph $H$ with/without node $v$ itself;\\
+$N(u_i,G)$ & The set of neighbors of node $u_i$ in graph $G$, two nodes $u_i$ and $u_j$ are neighbors of each other if $c(i,j){+}c(j,i){>}0$;\\
 \hline
-$w(S)$ & The accumulated weight of the nodes in S;\\
+$w_\text{NSW}(v,H)$ & $w_\text{NSW}(v,H){\mathop{=}\limits^\text{def}}\sum_{u{\in}\{N(v,H),v\}}w(u)$, which is the sum of the weights of node $v$'s neighbors in graph $H$ together with node $v$ itself;\\
 \hline
-$\varpi(G)$ & $\varpi(G){\mathop{=}\limits^\text{def}}\max_{H{\subseteq}G}(\min_{v{\in}H}w(N_{H,\text{y}}(v))$;\\
+$\varpi(G)$ & $\varpi(G){\mathop{=}\limits^\text{def}}\max_{H{\subseteq}G}(\min_{v{\in}H}w_\text{NSW}(v,H)$;\\
 \hline
 \hline
 \end{tabular}
@@ -232,7 +233,7 @@ $\varpi(G)$ & $\varpi(G){\mathop{=}\limits^\text{def}}\max_{H{\subseteq}G}(\min_
 
 Assume node $u_i$ always transmits energy with a constant power $p(i)$. When $u_i$ is transmitting energy, the energy power harvested by $u_j$ from $u_i$'s signal is expressed as $p_\text{H}(j){=}c(j,i){*}p(i)$, where the energy harvesting coefficient $c(i,j)$ embodies the effects of many factors such as the distance between nodes, environment, hardware restrictions. Energy harvesting coefficients are always non-negative. If $c(i,j){+}c(j,i){>}0$, then we say that $u_i$ and $u_j$ are neighbors. Furthermore, because of the energy conservation principle in practice, energy loss is inevitable during the wireless energy redistribution process, hence we assume $\sum_{j{\neq}i,j{\in}\mathcal{N}(n)}c(j,i){<}1$, $i{\in}\mathcal{N}(n)$. For completeness, we let $c(i,i){=}{-}1$, $i{\in}\mathcal{N}(n)$. The energy harvesting coefficients are assumed to be constant. We collect all energy harvesting coefficients into a matrix $\mathbf{C}{=}[c(i,j)]_{i,j{\in}\mathcal{N}(n)}$.
 
-Multiple simultaneous energy transmissions encountered at a node are assumed to be additive in energy harvesting applications, which is the \textit{energy harvesting additive assumption} widely adopted in the literature\cite{He2013,Dai2017TON,Dai2018TON}. To be specific, if a set of nodes $\{u_j|j{\in}U_\text{s}\}$ transmit energy with power $\{p_j|j{\in}U_\text{s}\}$ to another node $u_j$ simultaneously, then the energy power harvested by $u_j$ is $p_\text{H}(j){=}\sum_{k{\in}U_\text{s}}c(j,k){*}p(k)$. Harvested energy should be stored in the energy storage for later use. Excessive energy harvested by a node is lost when its energy storage is full. If some harvested energy are lost at some nodes, we say that there is \textit{Energy Upper Limit (EUL) violations}. If a node's instantaneous energy becomes lower than its energy lower limit, we say that there is \textit{Energy Lower Limit (ELL) violations}. EUL violations and ELL violations are both called as energy violations.
+Multiple simultaneous energy transmissions encountered at a node are assumed to be additive in energy harvesting applications, which is the \textit{energy harvesting additive assumption} widely adopted in the literature\cite{He2013,Dai2017TON,Dai2018TON}. To be specific, if a set of nodes $\{u_j|j{\in}U_\text{s}\}$ transmit energy with power $\{p_j|j{\in}U_\text{s}\}$ to another node $u_j$ simultaneously, then the energy power harvested by $u_j$ is $p_\text{H}(j){=}\sum_{k{\in}U_\text{s}}c(j,k){*}p(k)$. Harvested energy should be stored in the energy storage for later use. Excessive energy harvested by a node is lost when its energy storage is full. If some harvested energy is lost at some nodes, we say that there are \textit{Energy Upper Limit (EUL) violations}. If a node's instantaneous energy becomes lower than its energy lower limit, we say that there are \textit{Energy Lower Limit (ELL) violations}. EUL violations and ELL violations are both called as energy violations.
 
 To meet the requirement of $e_\text{F}{\succeq}e_\text{E}$, we are required to find an energy transmission schedule $s_\text{c}{\triangleq}\{s(1),s(2),\ldots\}$ where $s(i){\mathop{=}\limits^\text{def}}(u_\text{s}(i), t_\text{b}(i),t_\text{e}(i))$ represents a schedule item, which means to let node $u_\text{s}(i){\in}U$ transmit energy in time period $[t_\text{b}(i),t_\text{e}(i)]$.
 
@@ -487,7 +488,7 @@ Problem \textbf{P2} (\textit{i.e.}, \textbf{P3}) is a standard LP problem, which
 \label{sec_wpter_time}
 Given an energy transmission schedule, we can group the schedule items into sets $S^{i}{=}\{s^{i}_1, s^{i}_2, \ldots, s^{i}_{m_i}\}$, $i{\in}\mathcal{N}(n)$. Here set $S^{i}$ contains $m_i$ schedule items, where node $u_i$ should transmit energy. Thus, the total energy transmission period of $u_i$ contains $m_i$ time slices with lengths $t_\text{e}(s^{i}_j){-}t_\text{b}(s^{i}_j)$, $j{\in}\mathcal{N}(m_i)$.
 
-Once the energy transmission time-lengths of the nodes have been determined, the remanent work to solve the WPTERD problem is to schedule the nodes' energy transmission time slices along the time line, with the objection that the makespan of the schedule is minimum meanwhile no energy violations happen during the process. This is the WPTERD-Time problem, which is what the second step will solve. EUL-violations lead to energy loss thus destroying the energy optimality. ELL-violations lead to invalid schedule.
+Once the energy transmission time-lengths of the nodes have been determined, the remanent work to solve the WPTERD problem is to schedule the nodes' energy transmission time slices along the time line, with the objection that the makespan of the schedule is minimum meanwhile no energy violations happen during the process. This is the WPTERD-Time problem, which is what the second step will solve. EUL violations lead to energy loss thus destroying the energy optimality. ELL-violations lead to invalid schedule.
 
 To minimize the makespan of a schedule, we should try to make energy transmission time slices overlap along the time line. However, to preserve energy optimality of a schedule, the time slices of neighboring nodes should not overlap with each other, according to Theorem \ref{theorem_schedule_disjoint}.
 
@@ -522,7 +523,7 @@ E(G){=}\{&e(i,j)\hspace{-3mm}&|\hspace{1mm}c(i,j){+}c(j,i){>}0,i{\in}\mathcal{N}
 \right.
 \end{equation}
 
-The WPTERD-Time problem contains the following energy transmission task scheduling (ETTS) problem as its core: \textit{Given a set of $n$ energy transmission tasks with time vector $t{=}[t_1,t_2,\ldots,t_n]$ and the corresponding conflict graph $G(V,E,W)$, to find an energy transmission task schedule with minimum makespan}. The ETTS ignores the restrictions on energy violations, we can however solve the WPTERD-Time problem basing on a solution to the ETTS problem. Unfortunately, the ETTS problem is hard to solve, as shown in the following Theorem \ref{lemma_etts_npc}, which is proved by inducing from the well-known NP-hard graph coloring (GC) problem.
+The WPTERD-Time problem contains the following energy transmission task scheduling (ETTS) problem as its core: \textit{Given a set of $n$ energy transmission tasks with time vector $t{=}[t_1,t_2,\ldots,t_n]$ and the corresponding conflict graph $G(V,E,W)$, to find an energy transmission task schedule with minimum makespan}. The ETTS removes the restrictions of energy limits, we can however solve the WPTERD-Time problem basing on a solution to the ETTS problem. Unfortunately, the ETTS problem is hard to solve, as shown in the following Theorem \ref{lemma_etts_npc}, which is proved by inducing from the well-known NP-hard graph coloring (GC) problem.
 
 \begin{theorem}
 \label{lemma_etts_npc}
@@ -532,7 +533,7 @@ The ETTS problem is NP-hard.
 \begin{IEEEproof}
 We prove it by providing a polynomial reduction from the NP-hard GC problem to the ETTS problem. The GC problem is to find a coloring for a given graph $G(V,E)$ with minimum number of colors. A coloring of $G$ using $k$ colors is a function $c{:}V{\rightarrow}\mathcal{N}(k)$ such that adjacent vertices in $G$ are assigned with different colors.
 
-For a GC problem instance with graph $G(V,E)$, we construct an ETTS problem instance with $|V(G)|$ unit-length tasks and conflict graph $G(V,E)$, and its time-length vector is all 1. The construction of the ETTS problem instance from the GC problem instance is obviously polynomial. Furthermore, there is a one-to-one map between the coloring solutions of the GC instance and the task schedules of the ETTS instance. To be specific, we divided the time line in the ETTS problem into time slots with unit length, then for each graph coloring solution, we can let the nodes colored 1 transmit energy in the 1st time slot, and then those nodes colored 2 transmit in the 2nd slot, and so on. The makespan of the such an ETTS solution equals the number of the colors in the GC solution. As a conclusion, there is a polynomial reduction from the NP-hard GC problem to our ETTS problem.
+For a GC problem instance with graph $G(V,E)$, we construct an ETTS problem instance with $|V(G)|$ unit-length tasks and conflict graph $G(V,E)$, and its time-length vector is all 1. The construction of the ETTS problem instance from the GC problem instance is obviously polynomial. Furthermore, there is a one-to-one map between the coloring solutions of the GC instance and the task schedules of the ETTS instance. To be specific, we divided the time line in the ETTS problem into time slots with unit length, then for each graph coloring solution, we can let the nodes colored 1 transmit energy in the 1st time slot, and then those nodes colored 2 transmit in the 2nd slot, and so on. The makespan of such an ETTS solution equals the number of the colors in the GC solution. As a conclusion, there is a polynomial reduction from the NP-hard GC problem to our ETTS problem.
 \end{IEEEproof}
 
 \begin{theorem}
@@ -553,9 +554,9 @@ Theorem~\ref{lemma_etts_npc} and Theorem~\ref{lemma_wpterd_time_npc} imply that 
 
 \subsection{Step1: The LNSWL-SS Algorithm for the ETTS Problem}
 
-Inspired by the smallest-degree-last algorithm \cite{Marathe1995} for approximately solving the GC problem, we propose LNSWL-SS for the ETTS problem, which is a three-step algorithm. In the first step, it determines a sequence in which nodes having least neighbor-set-weight (NSW) are ordered at last. Hence we name it Least NSW Last Sequential Scheduling (LNSWL-SS) algorithm. Here a node's NSW means the sum of the weights of the node's neighbors. Then in the second step, it makes schedule decisions for the tasks greedily following this sequence. When making schedule decisions for each task, it is scheduled to run in any time slice not occupied by any of its neighbors already scheduled. Finally it returns the list of schedule items in format of 2-tuple (concurrent-task-set, time-length). A such schedule item represents a decision that the nodes in concurrent-task-set should transmit energy concurrently for time time-length. LNSWL-SS works a weighted graph $G(V,E,W)$ which encapsulates the ETTS problem's conflict graph $G(V,E)$ and task time-length vector \textbf{t} by assigning weight $W(i){=}t(i)$.
+Inspired by the smallest-degree-last algorithm \cite{Marathe1995} for approximately solving the GC problem, we propose LNSWL-SS for the ETTS problem, which is a three-step algorithm. In the first step, it determines a sequence in which nodes having least neighbor-set-weight (NSW) are ordered at last. Hence we name it Least NSW Last Sequential Scheduling (LNSWL-SS) algorithm. Here a node's NSW means the sum of the weights of the node's neighbors and itself. Then in the second step, it makes schedule decisions for the tasks greedily following this sequence. When making schedule decisions for each task, it is scheduled to run in any time slice not occupied by any of its neighbors already scheduled. Finally it returns the list of schedule items in format of 2-tuple (concurrent-task-set, time-length). A schedule item represents a decision that the nodes in concurrent-task-set should transmit energy concurrently for time time-length. LNSWL-SS works on a weighted graph $G(V,E,W)$ which encapsulates the ETTS problem's conflict graph $G(V,E)$ and task time-length vector \textbf{t} by assigning weight $W(i){=}t(i)$.
 
-The pseudo code of LNSWL-SS is shown in Alg.~\ref{Alg_LNSWL_SS}. The while-loop between code lines 2-7 implements the first step. A property value of graph $G$, defined as $\varpi(G){\mathop{=}\limits^{\text{def}}}\max_{H{\subseteq}G}(\min_{v{\in}H}w(N_\text{NSW}(v,H)$, is also obtained accompanyingly, which denotes the largest $\varpi$ such that $G$ contains a subgraph $H$ in which each node's NSW is at least $\varpi$. The for-loop between code lines 8-10 implements the second step. Code lines 12-15 implements the last step.
+The pseudo code of LNSWL-SS is shown in Alg.~\ref{Alg_LNSWL_SS}. The while-loop between code lines 2-7 implements the first step. A property value of graph $G$, defined as $\varpi(G){\mathop{=}\limits^{\text{def}}}\max_{H{\subseteq}G}(\min_{v{\in}H}w(N_\text{NSW}(v,H)$, is also obtained accompanyingly, which denotes the largest $\varpi$ such that $G$ contains a sub-graph $H$ in which each node's NSW is at least $\varpi$. The for-loop between code lines 8-10 implements the second step. Code lines 12-15 implements the last step.
 
 \begin{algorithm}[!htb]
 \caption{LNSWL-SS algorithm for the ETTS problem}
@@ -565,8 +566,8 @@ The pseudo code of LNSWL-SS is shown in Alg.~\ref{Alg_LNSWL_SS}. The while-loop 
     $S_\text{cts}$: the collection of (concurrent-task-set, time-length) schedule items;\\
     \STATE Initialize $G'{=}G(V,E)$, $\varpi(G){=}0$, $v_\text{List}{=}[ ]$;
     \WHILE {$G'{\neq}\emptyset$}\label{seqbegin}
-        \STATE $\varpi(G){=}\max(\varpi(G),\min_{v_j{\in}V(G')}w_\text{N}(G',v_j))$;\label{v_update}
-        \STATE $v_i{=}\arg\min_{v_j{\in}V(G')}w_\text{N}(G',v_j)$; $v_{List}=[v_i,v_\text{List}]$;
+        \STATE $\varpi(G){=}\max(\varpi(G)$;$\min_{v_j{\in}V(G')}w_\text{NSW}(v_j,G'))$;\label{v_update}
+        \STATE $v_i{=}\arg\min_{v_j{\in}V(G')}w_\text{NSW}(v_j,G')$; $v_\text{List}=[v_i,v_\text{List}]$;
         \STATE $V'{=}V(G'){-}v_i$; $E'{=}E(G'){-}\{e(i,k)|e(i,k){\in}V(G')\}$;
         \STATE $G'{=}G(V',E')$;
     \ENDWHILE \label{seqend}
@@ -722,7 +723,7 @@ The pseudo code of ETCS-S is shown in Alg.~\ref{Alg_ETCS_S}. It firstly inserts 
             \STATE $t3{=}\min\{t_1,t_2\}$;
             \STATE $e_{t1}{=}e_t{-}\mathbf{C}{*}\mathbf{p}{*}tv_{s1.CTS}(t3)$;
             \WHILE {${\exists}i{\in}N(s1.CTS), e_{t1}(i){>}e_\text{U}(i)$}
-                \STATE Find the maximum $t3$ that leads to no EUL-violation using the bisection method;\label{line_timelen_emax}
+                \STATE Find the maximum $t3$ that leads to no EUL violation using the bisection method;\label{line_timelen_emax}
                 \IF {$t3{<}\epsilon$}
                     \STATE $t3{=}\epsilon$;\textbf{break};\label{slicelen2epsilon}
                 \ENDIF
@@ -747,24 +748,9 @@ The pseudo code of ETCS-S is shown in Alg.~\ref{Alg_ETCS_S}. It firstly inserts 
 \end{algorithmic}
 \end{algorithm}
 
-There are cases that two neighboring nodes are both with full energy $e_\text{B}{=}e_\text{U}$ before the re-distribution. In this case, the bisection search (code lines 9-14 in Alg.~\ref{Alg_ETCS_S}) will fail to return a positive value. In fact, there is no way to avoid EUL-violation while keeping the energy optimality. One such case is shown in Fig.\ref{fig_full}. The parameters are as follows: energy upper limit $e_\text{U}{=}[10,10,10]$, energy at the beginning $e_\text{B}{=}[10,10,1]$, energy expectation $e_\text{E}{=}[6,6,2]$, and energy transmission power $p{=}[1,1,1]$. It is easy to check that the optimal energy transmission time-length solution to the corresponding WPTERD-Egy problem is $t{=}[5,5,0]$. However, whichever of the two nodes, $u_1$ and $u_2$, performs the energy transmission first, EUL-violation will happen at the other node. To solve this dilemma, we compromise the energy optimality by allowing a short time period $\epsilon$ for energy loss/overflow (code lines 11-13). After that period, the two nodes can perform energy transmissions alternatively: one node keeps transmitting until the other reaches its EUL, or its energy transmission time expectation is used up. We call this scheme as $\epsilon${-}scheme. The energy changing processes along time of the nodes using this scheme are shown in Fig~\ref{fig_full_sch}. Since that energy harvesting coefficient is quite small, the time-length of a node's continuous energy transmission time slice will increase rapidly. With small enough $\epsilon$, the amount of energy loss may be trivial. Indeed, the energy loss approaches 0 as $\epsilon{\rightarrow}0$.
-
-\begin{figure}[htb]
-\centering{\includegraphics[width=0.30\textwidth]{fig3_2full.eps}}
-\caption{WPTERD instance without practical schedules assuring energy optimality.}
-\label{fig_full}
-\end{figure}
-
-\vspace{-4mm}
-\begin{figure}[htb]
-\centering{\includegraphics[width=0.35\textwidth]{fig4_2full_sch.eps}}
-\caption{Energy changing processes along time of a $\epsilon${-}scheme schedule.}
-\label{fig_full_sch}
-\end{figure}
-
 \section{Solve the WPTERD Problem}
 \label{sec_algcombin}
-Based on the analyses in previous sections, we propose an algorithm to solve the WPTERD problem by combining the preliminary algorithms proposed. The outline of the final algorithm is already demonstrated in Fig.~\ref{fig_outline}. The algorithm decouples the energy-time joint optimization into the WPTERD-Egy problem and the WPTERD-Time problem, which focus exclusively on the optimization in energy and time, respectively. The graph-coloring inspired LNSWL-SS algorithm is the core of our algorithm, hence we name it Graph-Coloring inspired Energy-Time decoupling (GC-EgyTimeD) algorithm. The pseudo code of GC-EgyTimeD is shown in Alg.\ref{Alg_EgyTimeD}.  GC-EgyTimeD firstly solve the \textbf{P3} problem using mature LP optimization softwares to obtain $\mathbf{t}$. Then, it obtains $S_\text{cts}$ by using the LNSWL-SS algorithm to solve the corresponding ETTS problem, and at last generates a schedule $ST_\text{ss}$ from $S_\text{cts}$ by using the ETCS-S algorithm.
+Based on the analyses in previous sections, we propose an algorithm to solve the WPTERD problem by combining the preliminary algorithms proposed. The outline of the final algorithm is already demonstrated in Fig.~\ref{fig_outline}. The algorithm decouples the energy-time joint optimization into the WPTERD-Egy problem and the WPTERD-Time problem, which focus exclusively on the optimization in energy and time, respectively. The graph-coloring inspired LNSWL-SS algorithm is the core of our algorithm, hence we name it Graph-Coloring inspired Energy-Time decoupling (GC-EgyTimeD) algorithm. The pseudo code of GC-EgyTimeD is shown in Alg.\ref{Alg_EgyTimeD}.  GC-EgyTimeD firstly solve the \textbf{P3} problem using mature LP optimization software packages to obtain $\mathbf{t}$. Then, it obtains $S_\text{cts}$ by using the LNSWL-SS algorithm to solve the corresponding ETTS problem, and at last generates a schedule $ST_\text{ss}$ from $S_\text{cts}$ by using the ETCS-S algorithm.
 
 \begin{algorithm}[!htb]
 \caption{The GC-EgyTimeD algorithm}
@@ -787,7 +773,7 @@ Based on the analyses in previous sections, we propose an algorithm to solve the
 We conduct numerical simulations using Matlab 2015a on a computer with Win10-bit64, 2.21GHz i7-CPU, and 8GB Memory. Three performance metrics are used: \textit{Energy Loss Ratio}, \textit{Makespan}, and \textit{Switch Number}. The energy loss ratio metric is calculated as  $\frac{\sum_{i{\in}\mathcal{N}(n)}(e_\text{B}(i){-}e_\text{F}(i))}{\sum_{i{\in}\mathcal{N}(n),e_\text{E}(i){>}e_\text{B}(i)}(e_\text{E}(i){-}e_\text{B}(i))}$   , which implies the side 'cost' for redistribute energy in the network. The makespan metric represents the time-span of a schedule. The switch number metric represents the number of continuous energy transmissions slices of the nodes in the schedule, which is obtained by counting the starts of energy transmissions. This metric implies the number of node-status changes in a schedule. We obviously prefer algorithms with smaller energy loss ratio, smaller makespan, and smaller switch number.
 
 \subsection{Simulation Setup}
-For comparison purpose, besides GC-EgyTimeD, we implement another algorithm denoted as AlgNoConCur, where the nodes transmit energy one by one, \textit{i.e.}, no concurrency energy transmissions even for non-neighboring nodes. In AlgNoConCur, the time-length of each continuous energy transmission slice is determined in a way similar to that in ETCS-S in Alg.~\ref{Alg_ETCS_S}. Additionally, it is obvious that the maximum clique-weight of the weighted graph $G(V,E,W)$ of the ETTS problem is a lower bound for the makespan of an optimal schedule. We use a greedy-based algorithm denoted as LBClique to approximately solve the maximum clique-weight problem and use it as a baseline for performance evaluation. Thus, totally three algorithms are tested in our simulations: GC-EgyTimeD, AlgNoConCur, LBClique.
+For comparison purpose, besides GC-EgyTimeD, we implement another algorithm denoted as AlgNoConCur, where the nodes transmit energy one by one, \textit{i.e.}, no concurrency energy transmissions even for non-neighboring nodes. In AlgNoConCur, the time-length of each continuous energy transmission slice is determined in a way similar to that in ETCS-S in Alg.~\ref{Alg_ETCS_S}. Additionally, it is obvious that the maximum clique-weight of the weighted graph $G(V,E,W)$ of the ETTS problem is a lower bound for the makespan of an optimal schedule. We use a greedy-based algorithm denoted as LBClique to approximately solve the maximum clique-weight problem and use it as a baseline for performance evaluation. Thus, totally three algorithms are tested in our simulations: GC-EgyTimeD, AlgNoConCur, and LBClique.
 
 Main parameters and the default values in our simulations include \textit{number of nodes} $n{=}100$, \textit{side length} $L{=}10$ of the square network region, \textit{energy transmission power} $p{=}1$, \textit{ratio of energy-demanding nodes} $\eta{=}0.3$, and \textit{the amount of energy demanded by these energy-demanding nodes} is $e_\text{h}{=}5$, $e_\text{U}{=}100$, $e_\text{L}{=}20$, $e_\text{E,L}{=}30$,$e_\text{E,U}{=}90$. The energy harvesting mode parameters are set as $\alpha{=}0.3$, $\beta{=}1$, $\gamma{=}2$, and $D{=}4$. A set of particular values for these parameters is called a \textbf{simulation configuration}. For each simulation configuration, 300 problem instances are generated and treated using the tested algorithms in turn. The WPTERD-Egy problem of randomly generated WSNs may have no LP solutions at all, in such cases new problem instances are generated repeatedly until a valid problem instance is obtained. In each problem instance, $n$ nodes are randomly placed in the square region $L{\times}L$ (Although our analysis applies to 3D space, we restrict our simulations to 2D space, which does not damage the effectiveness of the simulations). $e_\text{B}(i)$, $i{\in}\mathcal{N}(n)$, are randomly selected in $[e_\text{E,L},e_\text{E,U})$ following the uniform distribution. Randomly select ${\lceil}n{*}\eta{\rceil}$ energy-demanding nodes and set $e_\text{E}(i)$ of each selected node to be $e_\text{B}(i){+}e_\text{h}$. The others nodes' energy expectations are set to $e_\text{E,L}$. Results of the performance metrics are collected and averaged to obtain the final results for the simulation configurations. The 95\% confidence intervals of the performance metrics are also calculated.
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.2-0.9997.4 (MiKTeX 2.9) (preloaded format=xelatex 2018.10.5)  13 JAN 2019 18:13
+This is XeTeX, Version 3.1415926-2.2-0.9997.4 (MiKTeX 2.9) (preloaded format=xelatex 2018.10.5)  14 JAN 2019 07:54
 entering extended mode
 **WPTERD_color.tex
 (F:\01paper\02PaperWrite\7_latex\01WPT\tiicolor\WPTERD_color.tex
@@ -287,98 +287,89 @@ File: fig0_outline.eps Graphic file (type eps)
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 118--119
-[]|\OT1/ptm/m/n/8 Wireless Pow-er Trans-fer based En-er-gy Re-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 122--122
 []|\OT1/ptm/m/n/8 WPTERD-
  []
 
 
-Underfull \hbox (badness 2126) in paragraph at lines 128--129
-[]|\OT1/ptm/m/n/8 energy-transmission con-cur-ren-t set schedul-ing al-
+Underfull \hbox (badness 1596) in paragraph at lines 128--129
+\OT1/ptm/m/n/8 go-rith-m, which to-geth-er with LNSWL-SS solves
  []
 
 [2]
-Underfull \hbox (badness 4001) in paragraph at lines 170--171
+Underfull \hbox (badness 4001) in paragraph at lines 171--172
 []\OT1/ptm/m/n/10 We con-sid-er a WS-N con-sist-ing of $\OML/cmm/m/it/10 n$ \OT
 1/ptm/m/n/10 stat-ic n-odes
  []
 
 
-Underfull \hbox (badness 6428) in paragraph at lines 170--171
+Underfull \hbox (badness 6428) in paragraph at lines 171--172
 \OML/cmm/m/it/10 U[]\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 u[]; u[]; [] ; u[]\OMS/c
 msy/m/n/10 g$\OT1/ptm/m/n/10 , where n-ode $\OML/cmm/m/it/10 u[]$ \OT1/ptm/m/n/
 10 is po-si-tioned at
  []
 
 
-Overfull \hbox (3.97421pt too wide) in paragraph at lines 183--183
-[]|\OT1/ptm/b/n/8 Notation| 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 194--195
+Underfull \hbox (badness 5667) in paragraph at lines 193--194
 []|\OT1/ptm/m/n/8 The ma-trix of the en-er-gy har-vest-ing co-ef-fi-cients
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--199
-[]|\OT1/ptm/m/n/8 The func-tion/list/vector of the n-odes' en-er-gy at
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
+[]|\OT1/ptm/m/n/8 The list/vector of the n-odes' be-gin-ning en-er-gy
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--199
-\OT1/ptm/m/n/8 the be-gin-ning time where it is $\OML/cmm/m/it/8 e[]\OT1/cmr/m/
-n/8 (\OML/cmm/m/it/8 i\OT1/cmr/m/n/8 )$ \OT1/ptm/m/n/8 for $\OML/cmm/m/it/8 u[]
-$\OT1/ptm/m/n/8 .
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
+[]|\OT1/ptm/m/n/8 The list/vector of the n-odes' fi-nal en-er-gy
  []
 
 
-Overfull \hbox (5.07224pt too wide) in paragraph at lines 208--208
-[]|$\OML/cmm/m/it/8 e[]; []$| 
+Underfull \hbox (badness 2961) in paragraph at lines 201--202
+[]|\OT1/ptm/m/n/8 The list/vector of the n-odes' en-er-gy up-per lim-it-s
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 208--209
-[]|\OT1/ptm/m/n/8 The func-tion/list/vector of the n-odes' low-er lim-it-s
+Underfull \hbox (badness 3029) in paragraph at lines 203--204
+[]|\OT1/ptm/m/n/8 The list/vector of the n-odes' en-er-gy low-er lim-it-s
  []
 
 
-Underfull \hbox (badness 4429) in paragraph at lines 208--209
-\OT1/ptm/m/n/8 of en-er-gy ex-pec-ta-tion-s where it is $\OML/cmm/m/it/8 e[]\OT
-1/cmr/m/n/8 (\OML/cmm/m/it/8 i\OT1/cmr/m/n/8 )$ \OT1/ptm/m/n/8 for $\OML/cmm/m/
-it/8 u[]$\OT1/ptm/m/n/8 .
+Underfull \hbox (badness 4366) in paragraph at lines 205--206
+[]|\OT1/ptm/m/n/8 The list/vector of the n-odes' en-er-gy ex-pec-ta-tion-s
  []
 
 
-Overfull \hbox (66.13087pt too wide) in paragraph at lines 216--216
-[]|$\OML/cmm/m/it/8 N[]\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 v; H\OT1/cmr/m/n/8 )$\OT
-1/ptm/m/n/8 ,$\OML/cmm/m/it/8 N[]\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 v; H\OT1/cmr/m
-/n/8 )$| 
+Overfull \hbox (6.22144pt too wide) in paragraph at lines 219--219
+[]|$\OML/cmm/m/it/8 w[]\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 v; H\OT1/cmr/m/n/8 )$| 
+ []
+
+
+Underfull \hbox (badness 3965) in paragraph at lines 219--220
+[]|$\OML/cmm/m/it/8 w[]\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 v; H\OT1/cmr/m/n/8 )[] [
+][] \OML/cmm/m/it/8 w\OT1/cmr/m/n/8 (\OML/cmm/m/it/8 u\OT1/cmr/m/n/8 )$\OT1/ptm
+/m/n/8 , which is the
  []
 
 File: fig1_network.eps Graphic file (type eps)
 <fig1_network.eps> [3]
-Underfull \hbox (badness 4001) in paragraph at lines 241--242
+Underfull \hbox (badness 4001) in paragraph at lines 242--243
 []\OT1/ptm/m/n/10 A valid sched-ule with \OT1/ptm/m/it/10 max-i-mum to-tal fi-n
 al en-er-gy
  []
 
 
-Underfull \hbox (badness 2134) in paragraph at lines 266--267
+Underfull \hbox (badness 2134) in paragraph at lines 267--268
 []\OT1/ptm/m/n/10 We will pro-vide our anal-y-ses and treat-men-t on the
  []
 
 [4]
-Underfull \hbox (badness 1629) in paragraph at lines 329--331
+Underfull \hbox (badness 1629) in paragraph at lines 330--332
 \OT1/ptm/m/n/10 en-er-gy trans-mis-sion, and it-s new fi-nal en-er-gy will
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--331
+Underfull \hbox (badness 10000) in paragraph at lines 330--332
 \OT1/ptm/m/n/10 be-come $\OML/cmm/m/it/10 e[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 
 v[]\OT1/cmr/m/n/10 )[] [](\OML/cmm/m/it/10 e[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10
  v[]\OT1/cmr/m/n/10 )[]\OML/cmm/m/it/10 c\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 v[];
@@ -389,19 +380,19 @@ OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; e[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 v[]\OT1
 
 File: fig2_path.eps Graphic file (type eps)
 <fig2_path.eps> [5]
-Underfull \hbox (badness 1354) in paragraph at lines 406--407
+Underfull \hbox (badness 1354) in paragraph at lines 407--408
 []\OT1/ptm/m/n/10 Assume the t-wo neigh-bor-ing n-odes as $\OML/cmm/m/it/10 u[]
 $ \OT1/ptm/m/n/10 and $\OML/cmm/m/it/10 u[]$\OT1/ptm/m/n/10 .
  []
 
 
-Underfull \hbox (badness 2189) in paragraph at lines 406--407
+Underfull \hbox (badness 2189) in paragraph at lines 407--408
 \OT1/ptm/m/n/10 Re-plac-ing $\OML/cmm/m/it/10 s[]$ \OT1/ptm/m/n/10 with $\OML/c
 mm/m/it/10 s[]$ \OT1/ptm/m/n/10 will not af-fec-t the amoun-
  []
 
 
-Underfull \hbox (badness 4859) in paragraph at lines 406--407
+Underfull \hbox (badness 4859) in paragraph at lines 407--408
 \OML/cmm/m/it/10 e[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s[]; t[]\OT1/cmr/m/n/10 (
 \OML/cmm/m/it/10 s[]\OT1/cmr/m/n/10 ))[]\OML/cmm/m/it/10 e[]\OT1/cmr/m/n/10 (\O
 ML/cmm/m/it/10 s[]; t[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s[]\OT1/cmr/m/n/10 ))$
@@ -411,12 +402,12 @@ ML/cmm/m/it/10 s[]; t[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 s[]\OT1/cmr/m/n/10 ))$
  []
 
 [6] [7]
-Underfull \hbox (badness 1394) in paragraph at lines 558--559
+Underfull \hbox (badness 1394) in paragraph at lines 559--560
 \OT1/ptm/m/n/10 The while-loop be-tween code lines 2-7 im-ple-ments the
  []
 
 
-Underfull \hbox (badness 3601) in paragraph at lines 558--559
+Underfull \hbox (badness 3601) in paragraph at lines 559--560
 \OT1/ptm/m/n/10 first step. A prop-er-ty val-ue of graph $\OML/cmm/m/it/10 G$\O
 T1/ptm/m/n/10 , de-fined as
  []
@@ -431,30 +422,28 @@ File: fig_2d6part.eps Graphic file (type eps)
 File: fig_3d24part.eps Graphic file (type eps)
  <fig_3d24part.eps>
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 720--721
+Underfull \hbox (badness 10000) in paragraph at lines 721--722
 [] []$\OML/cmm/m/it/10 i[][] [] [][]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 e[]\OT1/c
 mr/m/n/10 (\OML/cmm/m/it/10 i\OT1/cmr/m/n/10 )[]\OML/cmm/m/it/10 e[]\OT1/cmr/m/
 n/10 (\OML/cmm/m/it/10 i\OT1/cmr/m/n/10 ))\OML/cmm/m/it/10 =p\OT1/cmr/m/n/10 (\
 OML/cmm/m/it/10 i\OT1/cmr/m/n/10 )$\OT1/ptm/m/n/10 ;
  []
 
-File: fig3_2full.eps Graphic file (type eps)
-<fig3_2full.eps>
-File: fig4_2full_sch.eps Graphic file (type eps)
- <fig4_2full_sch.eps> [10]
+[10]
 File: sim_n100_egy.eps Graphic file (type eps)
  <sim_n100_egy.eps>
 File: sim_n100_makespan.eps Graphic file (type eps)
-
-<sim_n100_makespan.eps>
+ <sim_n100_makespan.eps>
 File: sim_n100_switchnum.eps Graphic file (type eps)
- <sim_n100_switchnum.eps> [11] [12]
-(F:\01paper\02PaperWrite\7_latex\01WPT\tiicolor\WPTERD_color.aux) ) 
+ <sim_n100_switchnum.eps>
+[11] [12
+
+] (F:\01paper\02PaperWrite\7_latex\01WPT\tiicolor\WPTERD_color.aux) ) 
 Here is how much of TeX's memory you used:
- 2715 strings out of 430486
- 37471 string characters out of 3191444
+ 2709 strings out of 430486
+ 37383 string characters out of 3191444
  101026 words of memory out of 3000000
- 5828 multiletter control sequences out of 15000+200000
+ 5824 multiletter control sequences out of 15000+200000
  33894 words of font info for 84 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
  27i,15n,24p,1763b,583s stack positions out of 5000i,500n,10000p,200000b,50000s
