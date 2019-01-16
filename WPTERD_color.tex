@@ -5,7 +5,9 @@
 %%Designed by TVT editorial office
 
 
-\documentclass[journal,10pt]{IEEEtran}
+%\documentclass[journal,10pt]{IEEEtran}
+\documentclass[12pt,journal,onecolumn,draftcls]{IEEEtran}
+
 \usepackage[cmex10]{amsmath}
 \usepackage[dvips]{graphicx}
 \usepackage{algorithm}
@@ -13,12 +15,6 @@
 \usepackage{array}
 \usepackage{amssymb}
 \usepackage{enumerate}
-
-
-\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
-\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
-\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
-\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
 
 
 \begin{document}
@@ -40,7 +36,7 @@
 
 
 \begin{abstract}
-Wireless energy redistribution using Wireless Power Transfer (WPT) is of key importance for enhancing Wireless Sensor Networks (WSNs). In this paper, we investigated the WPT based energy redistribution (WPTERD) problem in WSNs, which is to redistribute the energy among nodes to meet the energy demands of nodes meanwhile optimal in energy efficiency and time. We propose a two-step approach by decoupling the energy-time joint optimization into two problems named WPTERD-Egy and WPTERD-Time, which focus exclusively on the optimization in energy and time, respectively. We transform WPTERD-Egy as a linear programming (LP) problem by exploiting its properties, and obtain optimal time-lengths of the nodes' energy transmissions leading to minimum energy lost. The core of WPTERD-Time is the Energy Transmission Task Scheduling (ETTS) problem. Proving that ETTS and WPTERD-Time are both NP-hard, we propose Least neighbor-set-weight Last Sequential Scheduling (LNSWL-SS) algorithm on the inspiration of a graph coloring algorithm and upon which we solve WPTERD-Time to obtain an energy transmission schedule with approximately minimum makespan. Finally Graph Coloring inspired Egy-Time Decoupling (GC-EgyTimeD) algorithm is constructed upon LNSWL-SS for the WPTERD problem. Some approximation ratios of LNSWL-SS are obtained. Numerical simulations illustrate the effectiveness and efficiency of GC-EgyTimeD, which return schedules with minimum energy lost and approximately minimum makespan. By exploiting concurrent energy transmission opportunities, GC-EgyTimeD reduces makespan by about more than 65\% when compared with a schedule without concurrent transmissions.
+Wireless energy redistribution using Wireless Power Transfer (WPT) is of key importance for enhancing Wireless Sensor Networks (WSNs). In this paper, we investigated the WPT based energy redistribution (WPTERD) problem in WSNs, which is to redistribute the energy among nodes to meet the energy demands of nodes meanwhile optimal in energy efficiency and time. We propose a two-step approach by decoupling the energy-time joint optimization into two problems named WPTERD-Egy and WPTERD-Time, which focus exclusively on the optimization in energy and time, respectively. We transform WPTERD-Egy as a linear programming (LP) problem by exploiting its properties, and obtain optimal time-lengths of the nodes' energy transmissions leading to minimum energy lost. The core of WPTERD-Time is the Energy Transmission Task Scheduling (ETTS) problem. Proving that ETTS and WPTERD-Time are both NP-hard, we propose Least neighbor-set-weight Last Sequential Scheduling (LNSWL-SS) algorithm on the inspiration of a graph coloring algorithm, and using which we solve WPTERD-Time to obtain an energy transmission schedule with approximately minimum makespan. Finally Graph Coloring inspired Egy-Time Decoupling (GC-EgyTimeD) algorithm is constructed on LNSWL-SS for the WPTERD problem. Some approximation ratios of LNSWL-SS are obtained. Simulations show that GC-EgyTimeD return schedules with minimum energy lost and approximately minimum makespan. By exploiting concurrent energy transmission opportunities, GC-EgyTimeD reduces makespan by about more than 65\% when compared with a schedule without concurrent transmissions.
 
 \end{abstract}
 
